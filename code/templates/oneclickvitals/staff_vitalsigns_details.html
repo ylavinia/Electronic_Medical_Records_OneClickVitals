@@ -1,0 +1,54 @@
+{% extends 'base_staff.html' %}
+{% load staticfiles %}
+{% block title %}Vital Signs Details{% endblock %}
+{% block body_block %}
+{% if user.is_authenticated %}
+
+    <div class="page-header">
+          <h1><i class="fa fa-heartbeat"></i> Vital Signs Details</h1>
+    </div>
+    <div class="container">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                  <th scope="row" class="col-md-2">Patient</th>
+                  <td>{{vitalsigns_info.user.first_name}} {{vitalsigns_info.user.last_name}}</td>
+              </tr>
+              <tr>
+                  <th scope="row" class="col-md-2">Date</th>
+                  <td>{{vitalsigns_info.visit_date}}</td>
+              </tr>
+              <tr>
+                  <th scope="row" class="col-md-2">Heart Rate (bpm)</th>
+                  <td>{{vitalsigns_info.heart_rate}}</td>
+              </tr>
+              <tr>
+                  <th scope="row" class="col-md-2">Blood Pressure</th>
+                  <td>{{vitalsigns_info.blood_pressure}}</td>
+              </tr>
+              <tr>
+                  <th scope="row" class="col-md-2">Temperature (F)</th>
+                  <td>{{vitalsigns_info.temperature}}</td>
+              </tr>
+              <tr>
+                  <th scope="row" class="col-md-2">Height (inches)</th>
+                  <td>{{vitalsigns_info.current_height}}</td>
+              </tr>
+              <tr>
+                  <th scope="row" class="col-md-2">Weight (pounds)</th>
+                  <td>{{vitalsigns_info.current_weight}}</td>
+              </tr>
+              <tr>
+                  <th scope="row" class="col-md-2">Notes</th>
+                  <td>{{vitalsigns_info.notes}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      
+      
+    </div>
+{% endif %}
+
+{% endblock %}

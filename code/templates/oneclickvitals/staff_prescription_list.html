@@ -1,0 +1,44 @@
+{% extends 'base_staff.html' %}
+{% load staticfiles %}
+
+{% block title %}Prescription List{% endblock %}
+{% block body_block %}
+    <div class="page-header">
+          <h1><i class="fa fa-eyedropper"></i> Prescription List</h1>
+    </div>
+    <div class="container">
+        <table id="prescription" class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="col-md-1">Patient</th>
+                    <th class="col-md-1">Drug Name</th>
+                    <th class="col-md-1">Date</th>
+                    <th class="col-md-1">Days Supply</th>
+                    <th class="col-md-1">Refills</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pres in prescription %}
+                    <tr>
+                        <td><a href="{% url 'staff_prescription_details' pres.pk %}">{{ pres.user.first_name }} {{ pres.user.last_name }}</a></td>
+                        <td>{{ pres.drug_name }}</td>
+                        <td>{{ pres.date_of_issuance }}</td>
+                        <td>{{ pres.days_supply }}</td>
+                        <td>{{ pres.refills }}</td>
+                    </tr>
+                    {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+<!-- ------- JavaScript for Filter --------- -->
+
+
+    <script type="text/javascript">
+           jQuery(document).ready(function($) {
+                $(window).load(function() {
+                    $('#prescription').bdt();
+                });
+            });
+        </script>
+{% endblock %}

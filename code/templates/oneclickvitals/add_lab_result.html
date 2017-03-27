@@ -1,0 +1,219 @@
+{% extends 'base_doctor.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+
+
+{% block title %}AddLabResult{% endblock %}
+
+{% block body_block %}
+
+    <div class="page-header">
+
+        {% if messages %}
+        <div style="display:none;">
+            <audio autoplay="" controls>
+                <source src="{% static 'media/errors.mp3' %}" type="audio/mpeg"></source>
+            </audio>
+        </div>
+            <ul class="messages">
+                {% for message in messages %}
+                <h4 class="ocv-messages" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h4>
+                {% endfor %}
+            </ul>
+        {% endif %}
+          <h1><i class="fa fa-flask"></i> Lab Result</h1>
+
+    </div>
+
+      <div class="container">
+        <div class="header">
+        <ul style="padding-right:60px" class="nav nav-pills pull-right">
+
+
+          <li {% if bootstrap == 3 %} class="active"{% endif %}><a href="/model_form_v3/"></a></li>
+        </ul>
+
+        </div>
+
+        <div id="labresults">
+          <div class="table-responsive">
+
+              <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                      <th scope="row" class="col-md-2">Patient</th>
+                      <td>{{results_info.user.first_name}} {{results_info.user.last_name}}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row" class="col-md-2">Test Date</th>
+                      <td>{{results_info.test_date}}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row" class="col-md-2">Test Type</th>
+                      <td>{% if results_info.urine_culture %} Urine Culture,{% endif %}
+                          {% if results_info.blood_culture %} blood_culture,{% endif %}
+                          {% if results_info.blood_glucose %} blood_glucose,{% endif %}
+                          {% if results_info.allergy_test %} allergy_test,{% endif %}
+                          {% if results_info.thyroid %} thyroid,{% endif %}
+                          {% if results_info.viral_test %} viral_test,{% endif %}
+                          {% if results_info.pregnancy_test %} pregnancy_test,{% endif %}
+                      </td>
+                  </tr>
+
+                </tbody>
+              </table>
+
+            </div><br/><br/>
+        </div>
+
+    <form action="{{ action }}" method="POST">
+        {% csrf_token %}
+        {{ formL.non_field.errors }}
+      <table>
+        <tr>
+            <td>
+                <div class="fieldWrapper">
+
+                    {{ formL.user.errors }}
+                    <p><label class="col-sm-4" for="{{ formL.user.id_for_label }}">Patient Username</label></p>
+                    <div style="float:left" class="col-sm-8">{{ formL.user|add_class:"form-control"}}</div>
+<!--                    {{ form.as_table }} -->
+
+                </div>
+            </td>
+        </tr>
+          <tr>
+            <td>
+                <div class="fieldWrapper">
+
+                    {{ formL.test_date.errors }}
+                    <p><label class="col-sm-4" for="{{ formL.test_date.id_for_label }}">Date</label></p>
+                    <div style="float:left" class="col-sm-8">{{ formL.test_date|add_class:"form-control"}}</div>
+<!--                    {{ form.as_table }} -->
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="fieldWrapper">
+
+                    {{ formL.test_type.errors }}
+                    <p><label class="col-sm-4" for="{{ formL.test_type.id_for_label }}">Test Type</label></p>
+                    <div style="float:left" class="col-sm-8">{{ formL.test_type|add_class:"form-control"}}</div>
+<!--                    {{ form.as_table }} -->
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="fieldWrapper">
+                    {{ formL.specific_gravity.errors }}
+                    <p><label class="col-sm-4" for="{{ formL.specific_gravity.id_for_label }}">Specific Gravity </label></p>
+                    <div class="col-sm-8">{{ formL.specific_gravity|add_class:"form-control" }}</div>
+                </div>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="fieldWrapper">
+                    {{ formL.pH.errors }}
+                    <p><label class="col-sm-4" for="{{ formL.pH.id_for_label }}">pH</label></p>
+                    <div class="col-sm-8">{{ formL.pH|add_class:"form-control" }}</div>
+                </div>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="fieldWrapper">
+                    {{ formL.protein.errors }}
+                    <p><label class="col-sm-4" for="{{ formL.protein.id_for_label }}">Protein (mg/dL)</label></p>
+                    <div class="col-sm-8">{{ formL.protein|add_class:"form-control" }}</div>
+                </div>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="fieldWrapper">
+                    {{ formL.glucose.errors }}
+                    <p><label class="col-sm-4" for="{{ formL.glucose.id_for_label }}">Glucose (mg/dL)</label></p>
+                    <div class="col-sm-8">{{ formL.glucose|add_class:"form-control" }}</div>
+                </div>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="fieldWrapper">
+                    {{ formL.ketones.errors }}
+                    <p><label class="col-sm-4" for="{{ formL.ketones.id_for_label }}">Ketones</label></p>
+                    <div class="col-sm-8">{{ formL.ketones|add_class:"form-control" }}</div>
+                </div>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="fieldWrapper">
+                    {{ formL.blood.errors }}
+                    <p><label class="col-sm-4" for="{{ formL.blood.id_for_label }}">Blood</label></p>
+                    <div class="col-sm-8">{{ formL.blood|add_class:"form-control" }}</div>
+                </div>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="fieldWrapper">
+                    {{ formL.leukocyte_esterase.errors }}
+                    <p><label class="col-sm-4" for="{{ formL.leukocyte_esterase.id_for_label }}">Leukocyte Esterase</label></p>
+                    <div class="col-sm-8">{{ formL.leukocyte_esterase|add_class:"form-control" }}</div>
+                </div>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="fieldWrapper">
+                    {{ formL.nitrite.errors }}
+                    <p><label class="col-sm-4" for="{{ formL.nitrite.id_for_label }}">Nitrite</label></p>
+                    <div class="col-sm-8">{{ formL.nitrite|add_class:"form-control" }}</div>
+                </div>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="fieldWrapper">
+                    {{ formL.bilirubin.errors }}
+                    <p><label class="col-sm-4" for="{{ formL.bilirubin.id_for_label }}">Bilirubin</label></p>
+                    <div class="col-sm-8">{{ formL.bilirubin|add_class:"form-control" }}</div>
+                </div>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="fieldWrapper">
+                    {{ formL.urobilinogen.errors }}
+                    <p><label class="col-sm-4" for="{{ formL.urobilinogen.id_for_label }}">Urobilinogen-Ray</label></p>
+                    <div class="col-sm-8">{{ formL.urobilinogen|add_class:"form-control" }}</div>
+                </div>
+
+            </td>
+        </tr>
+        <tr>
+          <td>
+              <button type="submit" class="save btn btn-primary">Save</button>  
+            </td>
+          </tr>
+      </table>
+
+    </form>
+    </div>
+
+{% endblock %}

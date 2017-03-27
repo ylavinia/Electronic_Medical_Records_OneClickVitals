@@ -1,0 +1,295 @@
+{% extends 'base_patient.html' %}
+{% load staticfiles %}
+
+{% block title %}PatientProfile{% endblock %}
+{% block body_block %}
+
+{% if user.is_authenticated %}
+
+    <div class="page-header">
+
+          <h1><i class="fa fa-user"></i> MY PROFILE</h1>
+
+    </div>
+    <div class="container">
+      <div class="header">
+      <ul style="padding-right:60px" class="nav nav-pills pull-right">
+
+
+        <li {% if bootstrap == 3 %} class="active"{% endif %}><a href="/model_form_v3/"></a></li>
+
+      </ul>
+
+    </div>
+    <div role="tabpanel">
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><a href="#tabs-1" aria-controls="tabs-1" role="tab" data-toggle="tab">Personal Information</a></li>
+      <li role="presentation"><a href="#tabs-2" aria-controls="tabs-2" role="tab" data-toggle="tab">Emergency Contact</a></li>
+      <li role="presentation"><a href="#tabs-3" aria-controls="tabs-3" role="tab" data-toggle="tab">Medical History</a></li>
+      <li role="presentation"><a href="#tabs-4" aria-controls="tabs-4" role="tab" data-toggle="tab">Family History</a></li>
+    </ul>
+
+
+        <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="tabs-1">
+          
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <tbody>
+            <tr>
+                <th scope="row" class="col-md-2">Name</th>
+                <td>{{profile.user.first_name}} {{profile.user.last_name}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="col-md-2">Date of Birth</th>
+                <td>{{profile.date_of_birth}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="col-md-2">Phone Number</th>
+                <td>{{profile.phone_number}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="col-md-2">Address</th>
+                <td>{{profile.address_1}} {{profile.address_2}}, {{profile.city}}, {{profile.state}}, {{profile.zip_code}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="col-md-2">Insurance</th>
+                <td>{{profile.insurance}}</td>
+            </tr>
+            <tr>
+
+                <th scope="row" class="col-md-2">Preferred Pharmacy</th>
+
+                <td>{{pharmacy.pharmacy_name}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="col-md-2">Pharmacy Phone Number</th>
+                <td>{{pharmacy.pharmacy_phone_number}}</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+          <a class="btn btn-primary btnNext" >Next</a>
+
+      </div>
+        <div role="tabpanel" class="tab-pane" id="tabs-2">
+          
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <tbody>
+              <tr>
+                  <th scope="row" class="col-md-2">Emergency Contact</th>
+                  <td>{{emergency.contact_first_name}} {{emergency.contact_last_name}}</td>
+              </tr>
+              <tr>
+                  <th scope="row" class="col-md-2">Relationship</th>
+                  <td>{{emergency.relationship}}</td>
+              </tr>
+              <tr>
+                  <th scope="row" class="col-md-2">Phone Number</th>
+                  <td>{{emergency.contact_phone_number}}</td>
+              </tr>
+              <tr>
+                  <th scope="row" class="col-md-2">Address</th>
+                  <td>{{emergency.address_1}} {{emergency.address_2}}, {{emergency.city}}, {{emergency.state}}, {{emergency.zip_code}}</td>
+              </tr>
+                  
+            </tbody>
+
+          </table>
+        </div>
+       
+
+          <div class="btn-group" role="group" aria-label="...">
+          <a class="btn btn-primary btnPrevious" >Previous</a>
+          <a class="btn btn-primary btnNext" >Next</a>
+
+        </div>
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="tabs-3">
+          
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                      <th scope="row" class="col-md-2">Height</th>
+                      <td>{{medical_history.height}}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row" class="col-md-2">Weight</th>
+                      <td>{{medical_history.weight}}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row" class="col-md-2">Blood Type</th>
+                      <td>{{medical_history.blood_type}}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row" class="col-md-2">Allergies</th>
+                      <td>{{medical_history.allergies}}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row" class="col-md-2">Current Medications</th>
+                      <td>{{medical_history.current_medications}}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row" class="col-md-2">Chief Complaint</th>
+                      <td>{{medical_history.chief_complaint}}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row" class="col-md-2">Surgical History</th>
+                      <td>{{medical_history.surgical_history}}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row" class="col-md-2">Medical History</th>
+                      <td>{{medical_history.medical_history}}</td>
+                  </tr>
+
+                  <tr>
+                      <th scope="row" class="col-md-2">Social Habits</th>
+                      <td>{{medical_history.social_habits}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+                <div class="btn-group" role="group" aria-label="...">
+              <a class="btn btn-primary btnPrevious" >Previous</a>
+              <a class="btn btn-primary btnNext" >Next</a>
+            </div>
+              </div>
+              <div role="tabpanel" class="tab-pane" id="tabs-4">
+                
+                  <div class="table-responsive">
+                    <table class="table table-bordered">
+                      <tbody>
+                        <tr>
+                            <th scope="row" class="col-md-2">Stroke</th>
+
+                            
+                            {% if family_history.stroke %}
+                            <td>Yes</td>
+                            {% else %}
+                            <td>No</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th scope="row" class="col-md-2">Cancer</th>
+                            
+                            {% if family_history.cancer %}
+                            <td>Yes</td>
+                            {% else %}
+                            <td>No</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th scope="row" class="col-md-2">High Blood Pressure</th>
+                            
+                            {% if family_history.high_bp %}
+                            <td>Yes</td>
+                            {% else %}
+                            <td>No</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th scope="row" class="col-md-2">Tuberculosis</th>
+                            
+                            {% if family_history.tuberculosis %}
+                            <td>Yes</td>
+                            {% else %}
+                            <td>No</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th scope="row" class="col-md-2">Diabetes</th>
+                            
+                            {% if family_history.diabetes %}
+                            <td>Yes</td>
+                            {% else %}
+                            <td>No</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th scope="row" class="col-md-2">Leukemia</th>
+                            
+                            {% if family_history.leukemia %}
+                            <td>Yes</td>
+                            {% else %}
+                            <td>No</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th scope="row" class="col-md-2">Bleeding Tendency</th>
+                            
+                            {% if family_history.bleeding_tendency %}
+                            <td>Yes</td>
+                            {% else %}
+                            <td>No</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th scope="row" class="col-md-2">Heart Attack</th>
+                            
+                            {% if family_history.heart_attack %}
+                            <td>Yes</td>
+                            {% else %}
+                            <td>No</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th scope="row" class="col-md-2">Kidney Disease</th>
+                            
+                            {% if family_history.kidney_disease %}
+                            <td>Yes</td>
+                            {% else %}
+                            <td>No</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th scope="row" class="col-md-2">Rheumatic Heart</th>
+                            
+                            {% if family_history.rheumatic_heart %}
+                            <td>Yes</td>
+                            {% else %}
+                            <td>No</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th scope="row" class="col-md-2">Heart Failure</th>
+                            
+                            {% if family_history.heart_failure %}
+                            <td>Yes</td>
+                            {% else %}
+                            <td>No</td>
+                            {% endif %}
+
+                        </tr>
+
+                      </tbody>
+                    </table>
+                    </div>
+                    <a class="btn btn-primary btnPrevious" >Previous</a>
+
+                    </div>
+
+              </div>
+
+</div>
+</div>
+
+
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(window).load(function() { 
+            $('.btnNext').click(function(){
+            $('.nav-tabs > .active').next('li').find('a').trigger('click');
+            });
+
+            $('.btnPrevious').click(function(){
+            $('.nav-tabs > .active').prev('li').find('a').trigger('click');
+            });
+        });
+    });
+</script>
+
+{% endif %}
+{% endblock %}

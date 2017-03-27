@@ -1,0 +1,62 @@
+{% extends 'base_patient.html' %}
+
+{% load static %}
+
+{% block title %}IndexPatient{% endblock %}
+{% block body_block %}
+
+{% if user.is_authenticated %}
+    <div class="page-header">
+        <h1><i class="fa fa-home"></i> Welcome back, {{ user.first_name }}!</h1>
+{% else %}
+        <h3>Welcome to OneClickVitals</h3>
+{% endif %}
+    </div>
+
+<!------------------ slider ------------------------------------>
+
+        <div id="slider-wrapper">
+            <div id="slider">
+                <img src="{% static "media/onecigarettereducelife.png" %}" alt="" title="One Cigarette Can Reduce Life" />
+                <img src="{% static "media/laughingburn40calories.png" %}" alt="" title="Laughing Burns 40 Calories" />
+                <img src="{% static "media/exercisebrokenup10min.png" %}" alt="" title="Exercise Can Be Broken Up Into 10 Minute-Sessions" />
+                <img src="{% static "media/dontdriveifsleepdeprived.png" %}" alt="" title="Don't Drive If Sleep Deprived" />
+                <img src="{% static "media/sleep6to7hrs.png" %}" alt="" title="Sleep 6 to 7 hours"/>
+                <img src="{% static "media/turndownthevolume.png" %}" alt="" title="Turn Down the Volume"/>
+                <img src="{% static "media/drinkplentywater.png" %}" alt="" title="Drink Plenty of Water" />
+                <img src="{% static "media/complainingpeoplelivelonger.png" %}" alt="" title="Complaining People Live Longer" />
+                <img src="{% static "media/dontskipbreakfast.png" %}" alt="" title="Don't Skip Breakfast"/>
+                <img src="{% static "media/eatbalanceddiet.png" %}" alt="" title="Eat a Balanced Diet" />               
+                <img src="{% static "media/eathealthysnacks.png" %}" alt="" title="Eat Healthy Snacks" />               
+                <img src="{% static "media/exerciseeveryday.png" %}" alt="" title="Exercise Every Day"/> 
+            </div>
+        </div>
+
+<!---------------- end slider ----------------------------------->
+
+        <script type="text/javascript"> 
+            jQuery(document).ready(function($) {
+                $(window).load(function() { 
+                    var total = $('#slider img').length;
+                    var rand = Math.floor(Math.random()*total);
+                    $('#slider').nivoSlider({
+                      effect:'fade',
+                      slices:15,
+                      animSpeed:1700,
+                      pauseTime:3000,
+                      startSlide:rand, //start with random slide
+                      directionNav:true, //Next & Prev
+                      directionNavHide:false, //Only show on hover
+                      controlNav:false, //1,2,3...
+                      keyboardNav:true, //Use left & right arrows
+                      pauseOnHover:false, //Don't stop animation while hovering
+                      manualAdvance:false, //Force manual transitions
+                      captionOpacity:0.3
+
+                    }); 
+                }); 
+            });
+        </script>
+
+
+{% endblock %}

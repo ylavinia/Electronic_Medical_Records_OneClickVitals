@@ -1,0 +1,101 @@
+{% extends 'base_doctor.html' %}
+{% load staticfiles %}
+
+{% load widget_tweaks %}
+
+{% block title %}Visit Summary{% endblock %}
+{% block body_block %}
+
+{% if user.is_authenticated %}
+
+
+<div class="page-header">
+          <h1><i class="fa fa-tasks"></i> Patient Visit Summary</h1>
+    </div>
+    <div class="container">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+                <th scope="row" class="col-md-2">Name</th>
+                <td>{{appointment_list.user.first_name}} {{appointment_list.user.last_name}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="col-md-2">Appointment Date</th>
+                <td>{{appointment_list.appointment_date}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="col-md-2">Cheif Complaint</th>
+                <td>{{appointment_list.reason_for_appointment}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3><strong>Vitals</strong></h3>
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+                <th scope="row" class="col-md-2">Blood Pressure</th>
+                <td>{{vitalsigns_info.blood_pressure}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="col-md-2">Temperature (F)</th>
+                <td>{{vitalsigns_info.temperature}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="col-md-2">Current Weight (lb)</th>
+                <td>{{vitalsigns_info.current_weight}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3><strong>Diagnosis</strong></h3>
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+                <th scope="row" class="col-md-2">Diagnosis</th>
+                <td>{{diagnosis_info.diagnosis}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="col-md-2">Additional Comments</th>
+                <td>{{diagnosis_info.additional_comments}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="col-md-2">Follow Up Appointment</th>
+                {% if diagnosis_info.follow_up %}
+                <td>Yes <strong>(Please call @ (717) 444-0880 to make an appointment)</strong></td>
+                {% else %}
+                <td>No</td>
+                {% endif %}
+            </tr>
+          </tbody>
+        </table>
+          {% if prescription_info %}
+        <h3><strong>Prescription</strong></h3>
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+                <th scope="row" class="col-md-2">Drug Name</th>
+                <td>{{prescription_info.drug_name}} {{prescription_info.drug_strength}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="col-md-2">How to Take</th>
+                <td>{{prescription_info.dosage_form}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="col-md-2">Frequency</th>
+                <td>{{prescription_info.frequency}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="col-md-2">Number of Days</th>
+                <td>{{prescription_info.days_supply}}</td>
+            </tr>
+          </tbody>
+        </table>
+          {% endif %}
+        <button class="save btn btn-primary">Print</button>
+      </div>
+    </div>
+
+{% endif %}
+{% endblock %}

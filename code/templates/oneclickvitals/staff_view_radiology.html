@@ -1,0 +1,40 @@
+{% extends 'base_staff.html' %}
+{% load staticfiles %}
+
+{% block title %}Radiology Images{% endblock %}
+{% block body_block %}
+    <div class="page-header">
+        <h1><i class="fa fa-film"></i> Radiology Image  <a class="btn btn-default" href="{% url 'staff_edit_radiology' pk=img.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></h1>        
+    </div>
+    <div class="container">
+
+        <!-- Table for image description -->
+        <ul>
+            <table id="radiology" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class="col-md-1">Title</th>
+                        <th class="col-md-1">First Name</th>
+                        <th class="col-md-1">Last Name</th>
+                        <th class="col-md-1">Date</th>
+                        <th class="col-md-1">Comments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-md-1">{{ img.title }}</td>
+                        <td class="col-md-1">{{ img.user.first_name }}</td>
+                        <td class="col-md-1">{{ img.user.last_name }}</td>
+                        <td class="col-md-1">{{ img.created_date }}</td>
+                        <td class="col-md-1">{{ img.description }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        <!-- Image -->
+            <ul>
+                <img border="0" alt="" src="{{img.image.url }}" />
+            </ul>
+        </ul>
+
+    </div>
+{% endblock %}

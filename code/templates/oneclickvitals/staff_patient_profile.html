@@ -1,0 +1,412 @@
+{% extends 'base_staff.html' %}
+{% load staticfiles %}
+
+{% block title %}PatientProfile{% endblock %}
+{% block body_block %}
+
+{% if user.is_authenticated %}
+
+    <div class="page-header">
+
+          <h1><i class="fa fa-user"></i>  Patient Profile</h1>
+
+    </div>
+    <div class="container">
+      <div class="header">
+      <ul style="padding-right:60px" class="nav nav-pills pull-right">
+
+
+        <li {% if bootstrap == 3 %} class="active"{% endif %}><a href="/model_form_v3/"></a></li>
+      </ul>
+
+    </div>
+<!-- Tab Panel ------------------------------------------  -->        
+    <div role="tabpanel">
+        <ul class="nav nav-tabs">
+          <li role="presentation" class="active"><a href="#tabs-1" aria-controls="tabs-1" role="tab" data-toggle="tab"><i class="fa fa-user-secret"></i> Personal Info</a></li>
+          <li role="presentation"><a href="#tabs-2" aria-controls="tabs-2" role="tab" data-toggle="tab"><i class="fa fa-building"></i> Pharmacy</a></li>
+          <li role="presentation"><a href="#tabs-3" aria-controls="tabs-3" role="tab" data-toggle="tab"><i class="fa fa-heart"></i> Emergency </a></li>
+          <li role="presentation"><a href="#tabs-4" aria-controls="tabs-4" role="tab" data-toggle="tab"><i class="fa fa-medkit"></i> Medical History</a></li>
+          <li role="presentation"><a href="#tabs-5" aria-controls="tabs-5" role="tab" data-toggle="tab"><i class="fa fa-plus-square"></i> Family History</a></li>
+          <li role="presentation"><a href="#tabs-6" aria-controls="tabs-6" role="tab" data-toggle="tab"><i class="fa fa-heartbeat"></i> Vital Signs</a></li>
+          <li role="presentation"><a href="#tabs-7" aria-controls="tabs-7" role="tab" data-toggle="tab"><i class="fa fa-stethoscope"></i> Diagnosis</a></li>
+        </ul>   
+        
+<!-- Tab Content --------------------------------------- -->        
+        <div class="tab-content">
+            
+<!-- Personal Information tab -------------------------------------- -->    
+            
+            <div role="tabpanel" class="tab-pane active" id="tabs-1">
+              
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <th scope="row" class="col-md-2">Name</th>
+                    <td>{{profile.user.first_name}} {{profile.user.last_name}}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="col-md-2">Date of Birth</th>
+                    <td>{{profile.date_of_birth}}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="col-md-2">Gender</th>
+                    <td>{{profile.gender}}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="col-md-2">Phone Number</th>
+                    <td>{{profile.phone_number}}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="col-md-2">Address</th>
+                    <td>{{profile.address_1}} {{profile.address_2}} , {{profile.city}}, {{profile.state}}, {{profile.zip_code}}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="col-md-2">Insurance</th>
+                    <td>{{profile.insurance}}</td>
+                </tr>
+
+              </tbody>
+            </table>
+            </div>
+                
+                  <a class="btn btn-primary btnNext" >Next</a>
+                  <a class="btn btn-default" href="{% url 'staff_edit_patient' pk=profile.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+                
+          </div>
+
+<!-- Pharmacy Tab ---------------------------------------------- -->
+            
+          <div role="tabpanel" class="tab-pane" id="tabs-2">
+           
+
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <tbody>
+                  <tr>
+
+                      <th scope="row" class="col-md-2">Preferred Pharmacy</th>
+                      <td>{{pharmacy.pharmacy_name}}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row" class="col-md-2">Phone Number</th>
+                      <td>{{pharmacy.pharmacy_phone_number}}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row" class="col-md-2">Address</th>
+                      <td>{{pharmacy.address_1}} {{pharmacy.address_2}}, {{pharmacy.city}}, {{pharmacy.state}}, {{pharmacy.zip_code}}</td>
+                  </tr>
+                </tbody>
+            </table>
+          </div>
+       
+                <a class="btn btn-primary btnPrevious" >Previous</a>
+                <a class="btn btn-primary btnNext" >Next</a>
+                <a class="btn btn-default" href="{% url 'edit_patient' pk=profile.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+            
+        </div>
+    
+            
+            
+<!-- Emergency Contact tab -------------------------------------- -->
+            
+            <div role="tabpanel" class="tab-pane" id="tabs-3">
+             
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <tbody>
+                  <tr>
+                      <th scope="row" class="col-md-2">Emergency Contact</th>
+                      <td>{{emergency.contact_first_name}} {{emergency.contact_last_name}}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row" class="col-md-2">Relationship</th>
+                      <td>{{emergency.relationship}}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row" class="col-md-2">Phone Number</th>
+                      <td>{{emergency.contact_phone_number}}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row" class="col-md-2">Address</th>
+                      <td>{{emergency.address_1}} {{emergency.address_2}}, {{emergency.city}}, {{emergency.state}}, {{emergency.zip_code}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+                  <a class="btn btn-primary btnPrevious" >Previous</a>
+                  <a class="btn btn-primary btnNext" >Next</a>
+                  <a class="btn btn-default" href="{% url 'edit_patient' pk=profile.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+            
+            </div>
+            
+<!-- Medical History tab -------------------------------------- -->
+            
+            <div role="tabpanel" class="tab-pane" id="tabs-4">
+              
+                <div class="table-responsive">
+                  <table class="table table-bordered">
+                    <tbody>
+                      <tr>
+                          <th scope="row" class="col-md-2">Height</th>
+                          <td>{{medical_history.height}}</td>
+                      </tr>
+                      <tr>
+                          <th scope="row" class="col-md-2">Weight</th>
+                          <td>{{medical_history.weight}}</td>
+                      </tr>
+                      <tr>
+                          <th scope="row" class="col-md-2">Blood Type</th>
+                          <td>{{medical_history.blood_type}}</td>
+                      </tr>
+                      <tr>
+                          <th scope="row" class="col-md-2">Allergies</th>
+                          <td>{{medical_history.allergies}}</td>
+                      </tr>
+                      <tr>
+                          <th scope="row" class="col-md-2">Current Medications</th>
+                          <td>{{medical_history.current_medications}}</td>
+                      </tr>
+                      <tr>
+                          <th scope="row" class="col-md-2">Chief Complaint</th>
+                          <td>{{medical_history.chief_complaint}}</td>
+                      </tr>
+                      <tr>
+                          <th scope="row" class="col-md-2">Surgical History</th>
+                          <td>{{medical_history.surgical_history}}</td>
+                      </tr>
+                      <tr>
+                          <th scope="row" class="col-md-2">Medical History</th>
+                          <td>{{medical_history.medical_history}}</td>
+                      </tr>
+                      <tr>
+                          <th scope="row" class="col-md-2">Social Habits</th>
+                          <td>{{medical_history.social_habits}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </div>
+                  <a class="btn btn-primary btnPrevious" >Previous</a>
+                  <a class="btn btn-primary btnNext" >Next</a>
+                  <a class="btn btn-default" href="{% url 'edit_patient' pk=profile.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+            
+            </div>
+
+<!-- Family History tab -------------------------------------- -->
+            
+
+              <div role="tabpanel" class="tab-pane" id="tabs-5">
+                
+                  <div class="table-responsive">
+                    <table class="table table-bordered">
+                      <tbody>
+                        <tr>
+                            <th scope="row" class="col-md-2">Stroke</th>
+                            {% if family_history.stroke%}
+                            <td>Yes</td>
+                            {% else %}
+                            <td>No</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th scope="row" class="col-md-2">Cancer</th>
+                            {% if family_history.cancer %}
+                            <td>Yes</td>
+                            {% else %}
+                            <td>No</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th scope="row" class="col-md-2">High Blood Pressure</th>
+                            {% if family_history.high_bp %}
+                            <td>Yes</td>
+                            {% else %}
+                            <td>No</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th scope="row" class="col-md-2">Tuberculosis</th>
+                            {% if family_history.tuberculosis %}
+                            <td>Yes</td>
+                            {% else %}
+                            <td>No</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th scope="row" class="col-md-2">Diabetes</th>
+                            {% if family_history.diabetes %}
+                            <td>Yes</td>
+                            {% else %}
+                            <td>No</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th scope="row" class="col-md-2">Leukemia</th>
+                            {% if family_history.leukemia %}
+                            <td>Yes</td>
+                            {% else %}
+                            <td>No</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th scope="row" class="col-md-2">Bleeding Tendency</th>
+                            {% if family_history.bleeding_tendency %}
+                            <td>Yes</td>
+                            {% else %}
+                            <td>No</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th scope="row" class="col-md-2">Heart Attack</th>
+                            {% if family_history.heart_attack %}
+                            <td>Yes</td>
+                            {% else %}
+                            <td>No</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th scope="row" class="col-md-2">Kidney Disease</th>
+                            {% if family_history.kidney_disease %}
+                            <td>Yes</td>
+                            {% else %}
+                            <td>No</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th scope="row" class="col-md-2">Rheumatic Heart</th>
+                            {% if family_history.rheumatic_heart %}
+                            <td>Yes</td>
+                            {% else %}
+                            <td>No</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th scope="row" class="col-md-2">Heart Failure</th>
+                            {% if family_history.heart_failure %}
+                            <td>Yes</td>
+                            {% else %}
+                            <td>No</td>
+                            {% endif %}
+                        </tr>
+
+                      </tbody>
+                    </table>
+                    </div>
+                    <a class="btn btn-primary btnPrevious" >Previous</a>
+                    <a class="btn btn-primary btnNext" >Next</a>
+                    <a class="btn btn-default" href="{% url 'edit_patient' pk=profile.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+
+             </div>
+            
+<!-- Vital Signs tab -------------------------------------- -->
+            <div role="tabpanel" class="tab-pane" id="tabs-6">
+              
+                <div class="table-responsive">
+
+                  <table class="table table-bordered">
+                    <tbody>
+
+                      <tr>
+                          <th scope="row" class="col-md-2">Date</th>
+                          <td>{{vitalsigns_info.visit_date}}</td>
+                      </tr>
+                      <tr>
+                          <th scope="row" class="col-md-2">Heart Rate (bpm)</th>
+                          <td>{{vitalsigns_info.heart_rate}}</td>
+                      </tr>
+                      <tr>
+                          <th scope="row" class="col-md-2">Blood Pressure</th>
+                          <td>{{vitalsigns_info.blood_pressure}}</td>
+                      </tr>
+                      <tr>
+                          <th scope="row" class="col-md-2">Temperature (F)</th>
+                          <td>{{vitalsigns_info.temperature}}</td>
+                      </tr>
+                      <tr>
+                          <th scope="row" class="col-md-2">Height (inches)</th>
+                          <td>{{vitalsigns_info.current_height}}</td>
+                      </tr>
+                      <tr>
+                          <th scope="row" class="col-md-2">Weight (pounds)</th>
+                          <td>{{vitalsigns_info.current_weight}}</td>
+                      </tr>                                
+                      <tr>
+                          <th scope="row" class="col-md-2">Notes</th>
+                          <td>{{vitalsigns_info.notes}}</td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+
+                  </div>
+                  <a class="btn btn-primary btnPrevious" >Previous</a>
+                  <a class="btn btn-primary btnNext" >Next</a>
+<!--                  <a class="btn btn-default" href="{% url 'edit_patient' pk=profile.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>-->
+            </div>
+            
+<!-- Diagnosis tab -------------------------------------- -->
+            
+                <div role="tabpanel" class="tab-pane" id="tabs-7">
+                  
+                    <div class="table-responsive">
+
+                      <table class="table table-bordered">
+                        <tbody>
+
+                          <tr>
+                              <th scope="row" class="col-md-2">Date</th>
+                              <td>{{diagnosis_info.diagnosis_date}}</td>
+                          </tr>
+                          <tr>
+                              <th scope="row" class="col-md-2">Complaint</th>
+                              <td>{{diagnosis_info.complaint}}</td>
+                          </tr>
+                          <tr>
+                              <th scope="row" class="col-md-2">Diagnosis</th>
+                              <td>{{diagnosis_info.diagnosis}}</td>
+                          </tr>
+                          <tr>
+                              <th scope="row" class="col-md-2">Additional Comments</th>
+                              <td>{{diagnosis_info.additional_comments}}</td>
+                          </tr>
+                          <tr>
+                              <th scope="row" class="col-md-2">Follow Up Required</th>
+                              <td>{{diagnosis_info.follow_up}}</td>
+                          </tr>
+
+
+                      </tbody>
+                      </table>
+
+                      </div>
+                      <a class="btn btn-primary btnPrevious" >Previous</a>
+
+                      </div>
+<!--  End tabs --------------------------------------------------- -->
+              </div>
+<!-- End tab content --------------------------------------------- -->
+        </div>
+<!-- End tab panel ------------------------------------------------ -->        
+    </div>
+<!-- End container ------------------------------------------------ -->
+
+<!-- Javascript for Tabs ------------------------------------------- -->
+
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(window).load(function() { 
+            $('.btnNext').click(function(){
+            $('.nav-tabs > .active').next('li').find('a').trigger('click');
+            });
+
+            $('.btnPrevious').click(function(){
+            $('.nav-tabs > .active').prev('li').find('a').trigger('click');
+            });
+        });
+    });
+</script>
+
+{% endif %}
+{% endblock %}

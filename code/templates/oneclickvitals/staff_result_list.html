@@ -1,0 +1,39 @@
+{% extends 'base_staff.html' %}
+{% load staticfiles %}
+
+{% block title %}Vital Signs List{% endblock %}
+{% block body_block %}
+    <div class="page-header">
+          <h1><i class="fa fa-flask"></i> Lab Test Result List</h1>
+    </div>
+    <div class="container">
+        <table id="labresult" class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="col-md-1">Patient</th>
+                    <th class="col-md-1">Test Date</th>
+                    <th class="col-md-1">Test Type</th>                
+                </tr>
+            </thead>
+            <tbody>
+                {% for l in results %}
+                    <tr>
+                        <td><a href="{% url 'staff_result_details' l.pk %}">{{ l.user.first_name }} {{ l.user.last_name }}</a></td>
+                        <td>{{ l.test_date }}</td>
+                        <td>{{l.test_type }}</td>
+                    </tr>
+                    {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+<!-- ------- JavaScript for Filter --------- -->
+
+    <script type="text/javascript">
+           jQuery(document).ready(function($) {
+                $(window).load(function() {
+                    $('#labresult').bdt();
+                });
+            });
+    </script>
+{% endblock %}

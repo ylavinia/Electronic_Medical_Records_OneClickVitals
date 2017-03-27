@@ -1,0 +1,4 @@
+django>=1.5
+South
+python-dateutil
+django-filer

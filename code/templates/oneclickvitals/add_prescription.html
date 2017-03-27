@@ -1,0 +1,189 @@
+{% extends 'base_doctor.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% block title %}Add Prescription{% endblock %}
+
+
+{% block body_block %}
+
+    <div class="page-header">
+        {% if messages %}   
+        <div style="display:none;">
+            <audio autoplay="" controls>
+                <source src="{% static 'media/errors.mp3' %}" type="audio/mpeg"></source>
+            </audio>
+        </div>
+            <ul class="messages">
+                {% for message in messages %}
+                <h4 class="ocv-messages" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h4>
+                {% endfor %}
+            </ul>
+        {% endif %}
+          <h1><i class="fa fa-eyedropper"></i> Prescription</h1>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <ul style="padding-right:60px" class="nav nav-pills pull-right">
+                
+              <li {% if bootstrap == 3 %} class="active"{% endif %}><a href="/model_form_v3/"></a></li>
+            </ul>
+        </div>   
+          <form action="{{ action }}" method="POST">
+            <table>
+                <tbody>
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    <tr>
+                        <td>
+                            <div class="fieldWrapper">
+
+                                {{ form.user.errors }}
+                                <p><label class="col-sm-3" for="{{ form.user.id_for_label }}">Patient Username</label></p>
+                                <div style="float:left" class="col-sm-9">{{ form.user|add_class:"form-control"}}</div>
+<!--                    {{ form.as_table }} -->
+
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="fieldWrapper">
+
+                                {{ form.gender.errors }}
+                                <p><label class="col-sm-3" for="{{ form.reason.id_for_label }}">Gender</label></p>
+                                <div class="col-sm-9">{{ form.gender|add_class:"form-control" }}</div>
+<!--                    {{ form.as_table }} -->
+
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="fieldWrapper">
+
+                                {{ form.date_of_issuance.errors }}
+                                <p><label class="col-sm-3" for="{{ form.date_of_issuance.id_for_label }}">Date</label></p>
+                                <div class="col-sm-9">{{ form.date_of_issuance|add_class:"form-control" }}</div>
+            <!--                    {{ form.as_table }} -->
+
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="fieldWrapper">
+
+                                {{ form.days_supply.errors }}
+                                <p><label class="col-sm-3" for="{{ form.days_supply.id_for_label }}">Days Supply</label></p>
+                                <div class="col-sm-9">{{ form.days_supply|add_class:"form-control" }}</div>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="fieldWrapper">
+
+                                {{ form.drug_name.errors }}
+                                <p><label class="col-sm-3" for="{{ form.drug_name.id_for_label }}">Drug Name</label></p>
+                                <div class="col-sm-9">{{ form.drug_name|add_class:"form-control" }}</div>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="fieldWrapper">
+
+                                {{ form.drug_strength.errors }}
+                                <p><label class="col-sm-3" for="{{ form.drug_strength.id_for_label }}">Drug Strength</label></p>
+                                <div class="col-sm-9">{{ form.drug_strength|add_class:"form-control" }}</div>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="fieldWrapper">
+
+                                {{ form.dosage_form.errors }}
+                                <p><label class="col-sm-3" for="{{ form.dosage_form.id_for_label }}">Dosage Form</label></p>
+                                <div class="col-sm-9">{{ form.dosage_form|add_class:"form-control" }}</div>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="fieldWrapper">
+
+                                {{ form.frequency.errors }}
+                                <p><label class="col-sm-3" for="{{ form.frequency.id_for_label }}">Frequency</label></p>
+                                <div class="col-sm-9">{{ form.frequency|add_class:"form-control" }}</div>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="fieldWrapper">
+
+                                {{ form.quantity.errors }}
+                                <p><label class="col-sm-3" for="{{ form.quantity.id_for_label }}">Quantity</label></p>
+                                <div class="col-sm-9">{{ form.quantity|add_class:"form-control" }}</div>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="fieldWrapper">
+
+                                {{ form.npi_number.errors }}
+                                <p><label class="col-sm-3" for="{{ form.npi_number.id_for_label }}">NPI Number</label></p>
+                                <div class="col-sm-9">{{ form.npi_number|add_class:"form-control" }}</div>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="fieldWrapper">
+
+                                {{ form.ndc_number.errors }}
+                                <p><label class="col-sm-3" for="{{ form.ndc_number.id_for_label }}">NDC Number</label></p>
+                                <div class="col-sm-9">{{ form.ndc_number|add_class:"form-control" }}</div>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="fieldWrapper">
+
+                                {{ form.refills.errors }}
+                                <p><label class="col-sm-3" for="{{ form.refills.id_for_label }}">Refills</label></p>
+                                <div class="col-sm-9">{{ form.refills|add_class:"radio-control" }}</div>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                           <button type="submit" class="save btn btn-primary">Save</button> 
+                        </td>    
+                    </tr>
+                 </tbody>
+            </table>
+            <br/><br/>
+            
+        </form>
+         
+
+    </div>
+
+{% endblock %}

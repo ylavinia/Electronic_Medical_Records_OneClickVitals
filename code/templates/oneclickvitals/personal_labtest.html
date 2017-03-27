@@ -1,0 +1,55 @@
+{% extends 'base_patient.html' %}
+{% load staticfiles %}
+
+
+{% block title %}PatientLabTest{% endblock %}
+
+{% block body_block %}
+
+{% if user.is_authenticated %}
+
+    <div class="page-header">
+
+          <h1>MY LAB TESTS</h1>
+
+    </div>
+    <div class="container">
+      <div class="header">
+      <ul style="padding-right:60px" class="nav nav-pills pull-right">
+
+
+        <li {% if bootstrap == 3 %} class="active"{% endif %}><a href="/model_form_v3/"></a></li>
+
+      </ul>
+    </div>
+    <div class="table-responsive">
+      {% for n in labtest_list %}
+      <table class="table table-bordered">
+        <tbody>
+
+          <tr>
+              <th scope="row" class="col-md-2">Test Date</th>
+              <td>{{n.test_date}}</td>
+
+          </tr>
+          <tr>
+              <th scope="row" class="col-md-2">Test Type</th>
+              <td>{% if n.urine_culture %} Urine Culture,{% endif %}
+                            {% if n.blood_culture %} blood_culture,{% endif %}
+                            {% if n.blood_glucose %} blood_glucose,{% endif %}
+                            {% if n.allergy_test %} allergy_test,{% endif %}
+                            {% if n.thyroid %} thyroid,{% endif %}
+                            {% if n.viral_test %} viral_test,{% endif %}
+                            {% if n.pregnancy_test %} pregnancy_test,{% endif %}
+                  {{n.x_ray}}-X-Ray
+                </td>
+          </tr>
+
+      </tbody>
+      </table>
+      {% endfor %}
+    </div>
+  </div>
+
+{% endif %}
+{% endblock %}

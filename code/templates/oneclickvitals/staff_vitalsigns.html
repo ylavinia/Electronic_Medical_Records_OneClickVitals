@@ -1,0 +1,122 @@
+
+{% extends 'base_staff.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+
+{% block title %}Add Vital Signs{% endblock %}
+
+{% block body_block %}
+
+    <div class="page-header">
+        {% if messages %}
+        <div style="display:none;">
+            <audio autoplay="" controls>
+                <source src="{% static 'media/errors.mp3' %}" type="audio/mpeg"></source>
+            </audio>
+        </div>
+            <ul class="messages">
+                {% for message in messages %}
+                <h4 class="ocv-messages" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h4>
+                {% endfor %}
+            </ul>
+        {% endif %}
+          <h1><i class="fa fa-heartbeat"></i> Add Vital Signs</h1>
+    </div>
+
+      <div class="container">
+        <div class="header">
+        <ul style="padding-right:60px" class="nav nav-pills pull-right">
+
+          <li {% if bootstrap == 3 %} class="active"{% endif %}><a href="/model_form_v3/"></a></li>
+        </ul>
+
+        </div>
+        <form action="{{ action }}" method="POST">
+          <table>
+            <tbody>
+              {% csrf_token %}
+              {{ form.non_field_errors }}
+              <tr>
+                <td style="padding-bottom:10px;">
+                   <div class="fieldWrapper">
+                        {{ form.user.errors }}
+                        <p><label class="col-sm-3" for="{{ form.user.id_for_label }}">Patient Username</label></p>
+                        <div class="col-sm-9">{{ form.user|add_class:"form-control" }}</div>
+                    </div>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding-bottom:10px;">
+                   <div class="fieldWrapper">
+                        {{ form.visit_date.errors }}
+                        <p><label class="col-sm-3" for="{{ form.visit_date.id_for_label }}">Visit Date</label></p>
+                        <div class="col-sm-9">{{ form.visit_date|add_class:"form-control" }}</div>
+                    </div>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding-bottom:10px;">
+                   <div class="fieldWrapper">
+                        {{ form.heart_rate.errors }}
+                        <p><label class="col-sm-3" for="{{ form.heart_rate.id_for_label }}">Heart Rate (bpm)</label></p>
+                        <div class="col-sm-9">{{ form.heart_rate|add_class:"form-control" }}</div>
+                    </div>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding-bottom:10px;">
+                   <div class="fieldWrapper">
+                        {{ form.blood_pressure.errors }}
+                        <p><label class="col-sm-3" for="{{ form.blood_pressure.id_for_label }}">Blood Pressure</label></p>
+                        <div class="col-sm-9">{{ form.blood_pressure|add_class:"form-control" }}</div>
+                    </div>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding-bottom:10px;">
+                   <div class="fieldWrapper">
+                        {{ form.temperature.errors }}
+                        <p><label class="col-sm-3" for="{{ form.temperature.id_for_label }}">Temperature (F)</label></p>
+                        <div class="col-sm-9">{{ form.temperature|add_class:"form-control" }}</div>
+                    </div>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding-bottom:10px;">
+                   <div class="fieldWrapper">
+                        {{ form.current_weight.errors }}
+                        <p><label class="col-sm-3" for="{{ form.current_weight.id_for_label }}">Weight (lbs)</label></p>
+                        <div class="col-sm-9">{{ form.current_weight|add_class:"form-control" }}</div>
+                    </div>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding-bottom:10px;">
+                   <div class="fieldWrapper">
+                        {{ form.current_height.errors }}
+                        <p><label class="col-sm-3" for="{{ form.current_height.id_for_label }}">Height (inches)</label></p>
+                        <div class="col-sm-9">{{ form.current_height|add_class:"form-control" }}</div>
+                    </div>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding-bottom:10px;">
+                   <div class="fieldWrapper">
+                        {{ form.notes.errors }}
+                        <p><label class="col-sm-3" for="{{ form.notes.id_for_label }}">Notes</label></p>
+                        <div class="col-sm-9">{{ form.notes|add_class:"form-control" }}</div>
+                    </div>
+                </td>
+              </tr>
+            <tr>
+                <td>
+                    <button type="submit" class="save btn btn-primary">Save</button>
+                </td>
+            </tr>
+            </tbody>
+          </table>
+        </form>
+
+    </div>
+
+{% endblock %}

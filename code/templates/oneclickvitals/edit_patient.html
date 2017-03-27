@@ -1,0 +1,629 @@
+{% extends 'base_doctor.html' %}
+{% load staticfiles %}\
+{% load widget_tweaks %}
+
+
+{% block title %}Edit Patient{% endblock %}
+{% block body_block %}
+
+    <div class="page-header">
+        {% if messages %}
+        <div style="display:none;">
+            <audio autoplay="" controls>
+                <source src="{% static 'media/errors.mp3' %}" type="audio/mpeg"></source>
+            </audio>
+        </div>
+            <ul class="messages">
+                {% for message in messages %}
+                <h4 class="ocv-messages" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h4>
+                {% endfor %}
+            </ul>
+        {% endif %}
+          <h1><i class="fa fa-user-times"></i> Edit Patient Profile</h1>
+    </div>
+
+      <div class="container">
+        <div class="header">
+    </div>
+
+  <div role="tabpanel">
+  <ul class="nav nav-tabs">
+
+
+    <li role="presentation" class="active"><a href="#tabs-1" aria-controls="tabs-1" role="tab" data-toggle="tab"><i class="fa fa-user"></i> New Patient</a></li>
+    <li role="presentation"><a href="#tabs-2" aria-controls="tabs-2" role="tab" data-toggle="tab"><i class="fa fa-user-secret"></i> Patient Details</a></li>
+    <li role="presentation"><a href="#tabs-3" aria-controls="tabs-3" role="tab" data-toggle="tab"><i class="fa fa-heart"></i> Emergency Contact</a></li>
+    <li role="presentation"><a href="#tabs-4" aria-controls="tabs-4" role="tab" data-toggle="tab"><i class="fa fa-medkit"></i> Medical History</a></li>
+    <li role="presentation"><a href="#tabs-5" aria-controls="tabs-5" role="tab" data-toggle="tab"><i class="fa fa-plus-square"></i> Family History</a></li>
+    <li role="presentation"><a href="#tabs-6" aria-controls="tabs-6" role="tab" data-toggle="tab"><i class="fa fa-building"></i> Pharmacy Details</a></li>
+
+
+  </ul>
+  <div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="tabs-1">
+    <form action="{{ action }}" method="POST">
+      <table>
+      {% csrf_token %}
+      {{ formA.non_field_errors }}
+        <tr>
+
+            <td style="padding-bottom:10px; padding-top:20px;">
+
+                <div class="fieldWrapper">
+                    {{ formA.first_name.errors }}
+                    <p><label class="col-sm-3" for="{{ formA.user.first_name.id_for_label }}">First Name</label></p>
+                    <div class="col-sm-9">{{ formA.first_name|add_class:"form-control" }}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formA.last_name.errors }}
+                    <p><label class="col-sm-3" for="{{ formA.user.id_for_label }}">Last Name</label></p>
+                    <div class="col-sm-9">{{ formA.last_name|add_class:"form-control" }}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formA.username.errors }}
+                    <p><label class="col-sm-3" for="{{ formA.username.id_for_label }}">Username</label></p>
+                    <div class="col-sm-9">{{ formA.username|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formA.email.errors }}
+                    <p><label class="col-sm-3" for="{{ formA.email.id_for_label }}">Email</label></p>
+                    <div class="col-sm-9">{{ formA.email|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formA.groups.errors }}
+                    <p><label class="col-sm-3" for="{{ formA.groups.id_for_label }}">Group</label></p>
+                    <div class="col-sm-9">{{ formA.groups|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#tabs-2" class="btn btn-primary btnNext" >Next</a>
+            </td>
+          </tr>
+      </table>
+
+
+
+  </div>
+    <div role="tabpanel" class="tab-pane" id="tabs-2">
+
+        <table>
+
+        {{ formB.non_field_errors }}
+        <tr>
+            <td style="padding-bottom:10px; padding-top:20px;">
+
+                <div class="fieldWrapper">
+                    {{ formB.gender.errors }}
+                    <p><label class="col-sm-3" for="{{ formB.gender.id_for_label }}">Gender</label></p>
+                    <div class="col-sm-9">{{ formB.gender|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formB.date_of_birth.errors }}
+                    <p><label class="col-sm-3" for="{{ formB.date_of_birth.id_for_label }}">Date of Birth</label></p>
+                    <div class="col-sm-9">{{ formB.date_of_birth|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formB.insurance.errors }}
+                    <p><label class="col-sm-3" for="{{ formB.insurance.id_for_label }}">Insurance</label></p>
+                    <div class="col-sm-9">{{ formB.insurance|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formB.phone_number.errors }}
+                    <p><label class="col-sm-3" for="{{ formB.phone_number.id_for_label }}">Phone Number</label></p>
+                    <div class="col-sm-9">{{ formB.phone_number|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formB.address_1.errors }}
+                    <p><label class="col-sm-3" for="{{ formB.address_1.id_for_label }}">Address</label></p>
+                    <div class="col-sm-9">{{ formB.address_1|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formB.address_2.errors }}
+                    <p><label class="col-sm-3" for="{{ formB.address_2.id_for_label }}">Address contd..</label></p>
+                    <div class="col-sm-9">{{ formB.address_2|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formB.city.errors }}
+                    <p><label class="col-sm-3" for="{{ formB.city.id_for_label }}">City</label></p>
+                    <div class="col-sm-9">{{ formB.city|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formB.state.errors }}
+                    <p><label class="col-sm-3" for="{{ formB.state.id_for_label }}">State</label></p>
+                    <div class="col-sm-9">{{ formB.state|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formB.zip_code.errors }}
+                    <p><label class="col-sm-3" for="{{ formB.zip_code.id_for_label }}">Zip Code</label></p>
+                    <div class="col-sm-9">{{ formB.zip_code|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+            <tr>
+                <td>
+                    <a class="btn btn-primary btnPrevious" >Previous</a>
+                    <a class="btn btn-primary btnNext" >Next</a>
+                </td>
+            </tr>
+      </table>
+
+
+
+  </div>
+    <div role="tabpanel" class="tab-pane" id="tabs-3">
+
+        <table>
+
+        {{ formC.non_field_errors }}
+        <tr>
+            <td style="padding-bottom:10px; padding-top:20px;">
+
+                <div class="fieldWrapper">
+                    {{ formC.contact_first_name.errors }}
+                    <p><label class="col-sm-3" for="{{ formC.contact_first_name.id_for_label }}">First Name</label></p>
+                    <div class="col-sm-9">{{ formC.contact_first_name|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formC.contact_last_name.errors }}
+                    <p><label class="col-sm-3" for="{{ formC.contact_last_name.id_for_label }}">Last Name</label></p>
+                    <div class="col-sm-9">{{ formC.contact_last_name|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formC.relationship.errors }}
+                    <p><label class="col-sm-3" for="{{ formC.relationship.id_for_label }}">Relationship</label></p>
+                    <div class="col-sm-9">{{ formC.relationship|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formC.contact_phone_number.errors }}
+                    <p><label class="col-sm-3" for="{{ formC.contact_phone_number.id_for_label }}">Phone Number</label></p>
+                    <div class="col-sm-9">{{ formC.contact_phone_number|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formC.address_1.errors }}
+                    <p><label class="col-sm-3" for="{{ formC.address_1.id_for_label }}">Address</label></p>
+                    <div class="col-sm-9">{{ formC.address_1|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formC.address_2.errors }}
+                    <p><label class="col-sm-3" for="{{ formC.address_2.id_for_label }}">Address contd..</label></p>
+                    <div class="col-sm-9">{{ formC.address_2|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formC.city.errors }}
+                    <p><label class="col-sm-3" for="{{ formC.city.id_for_label }}">City</label></p>
+                    <div class="col-sm-9">{{ formC.city|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formC.state.errors }}
+                    <p><label class="col-sm-3" for="{{ formC.state.id_for_label }}">State</label></p>
+                    <div class="col-sm-9">{{ formC.state|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formC.zip_code.errors }}
+                    <p><label class="col-sm-3" for="{{ formC.zip_code.id_for_label }}">Zip Code</label></p>
+                    <div class="col-sm-9">{{ formC.zip_code|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a class="btn btn-primary btnPrevious" >Previous</a>
+                <a class="btn btn-primary btnNext" >Next</a>
+            </td>
+        </tr>
+      </table>
+
+  </div>
+    <div role="tabpanel" class="tab-pane" id="tabs-4">
+
+        <table>
+
+        {{ formD.non_field_errors }}
+        <tr>
+            <td style="padding-bottom:10px; padding-top:20px;">
+
+                <div class="fieldWrapper">
+                    {{ formD.height.errors }}
+                    <p><label class="col-sm-3" for="{{ formD.height.id_for_label }}">Height(in inches)</label></p>
+                    <div class="col-sm-9">{{ formD.height|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formD.weight.errors }}
+                    <p><label class="col-sm-3" for="{{ formD.weight.id_for_label }}">Weight(in lb)</label></p>
+                    <div class="col-sm-9">{{ formD.weight|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formD.blood_type.errors }}
+                    <p><label class="col-sm-3" for="{{ formD.blood_type.id_for_label }}">Blood Type</label></p>
+                    <div class="col-sm-9">{{ formD.blood_type|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formD.allergies.errors }}
+                    <p><label class="col-sm-3" for="{{ formD.allergies.id_for_label }}">Allergies</label></p>
+                    <div class="col-sm-9">{{ formD.allergies|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formD.current_medications.errors }}
+                    <p><label class="col-sm-3" for="{{ formD.current_medications.id_for_label }}">Current Medications</label></p>
+                    <div class="col-sm-9">{{ formD.current_medications|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formD.chief_complaint.errors }}
+                    <p><label class="col-sm-3" for="{{ formD.chief_complaint.id_for_label }}">Chief Complaint</label></p>
+                    <div class="col-sm-9">{{ formD.chief_complaint|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formD.surgical_history.errors }}
+                    <p><label class="col-sm-3" for="{{ formD.surgical_history.id_for_label }}">Surgical History</label></p>
+                    <div class="col-sm-9">{{ formD.surgical_history|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formD.medical_history.errors }}
+                    <p><label class="col-sm-3" for="{{ formD.medical_history.id_for_label }}">Medical History</label></p>
+                    <div class="col-sm-9">{{ formD.medical_history|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formD.social_habits.errors }}
+                    <p><label class="col-sm-3" for="{{ formD.social_habits.id_for_label }}">Social Habits</label></p>
+                    <div class="col-sm-9">{{ formD.social_habits|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+            <tr>
+                <td>
+                    <a class="btn btn-primary btnPrevious" >Previous</a>
+                    <a class="btn btn-primary btnNext" >Next</a>
+
+                </td>
+            </tr>
+      </table>
+  </div>
+    <div role="tabpanel" class="tab-pane" id="tabs-5">
+
+        <table>
+
+        {{ formE.non_field_errors }}
+        <tr>
+            <td style="padding-bottom:10px; padding-top:20px;">
+                <div class="fieldWrapper">
+                    {{ formE.stroke.errors }}
+                    <p><label class="col-sm-3" for="{{ formE.stroke.id_for_label }}">Stroke</label></p>
+                    <div class="col-sm-9">{{ formE.stroke|add_class:"radio-control"}}</div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formE.cancer.errors }}
+                    <p><label class="col-sm-3" for="{{ formE.cancer.id_for_label }}">Cancer</label></p>
+
+                    <div class="col-sm-9">{{ formE.cancer|add_class:"radio-control"}}</div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formE.high_bp.errors }}
+                    <p><label class="col-sm-3" for="{{ formE.high_bp.id_for_label }}">High BP</label></p>
+
+                    <div class="col-sm-9">{{ formE.high_bp|add_class:"radio-control"}}</div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formE.tuberculosis.errors }}
+                    <p><label class="col-sm-3" for="{{ formE.tuberculosis.id_for_label }}">Tuberculosis</label></p>
+
+                    <div class="col-sm-9">{{ formE.tuberculosis|add_class:"radio-control"}}</div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formE.diabetes.errors }}
+                    <p><label class="col-sm-3" for="{{ formE.diabetes.id_for_label }}">Diabetes</label></p>
+
+                    <div class="col-sm-9">{{ formE.diabetes|add_class:"radio-control"}}</div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formE.leukemia.errors }}
+                    <p><label class="col-sm-3" for="{{ formE.leukemia.id_for_label }}">Leukemia</label></p>
+
+                    <div class="col-sm-9">{{ formE.leukemia|add_class:"radio-control"}}</div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formE.bleeding_tendency.errors }}
+                    <p><label class="col-sm-3" for="{{ formE.bleeding_tendency.id_for_label }}">Bleeding Tendency</label></p>
+
+                    <div class="col-sm-9">{{ formE.bleeding_tendency|add_class:"radio-control"}}</div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formE.heart_attack.errors }}
+                    <p><label class="col-sm-3" for="{{ formE.heart_attack.id_for_label }}">Heart Attack</label></p>
+
+                    <div class="col-sm-9">{{ formE.heart_attack|add_class:"radio-control"}}</div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formE.kidney_disease.errors }}
+                    <p><label class="col-sm-3" for="{{ formE.kidney_disease.id_for_label }}">Kidney Disease</label></p>
+
+                    <div class="col-sm-9">{{ formE.kidney_disease|add_class:"radio-control"}}</div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formE.heart_failure.errors }}
+                    <p><label class="col-sm-3" for="{{ formE.heart_failure.id_for_label }}">Heart Failure</label></p>
+
+                    <div class="col-sm-9">{{ formE.heart_failure|add_class:"radio-control"}}</div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formE.rheumatic_heart.errors }}
+                    <p><label class="col-sm-3" for="{{ formE.rheumatic_heart.id_for_label }}">Rheumatic Heart</label></p>
+
+                    <div class="col-sm-9" >{{ formE.rheumatic_heart|add_class:"radio-control"}}</div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a class="btn btn-primary btnPrevious" >Previous</a>
+                <a class="btn btn-primary btnNext" >Next</a>
+            </td>
+        </tr>
+      </table>
+  </div>
+    <div role="tabpanel" class="tab-pane" id="tabs-6">
+
+        <table>
+
+        {{ formF.non_field_errors }}
+        <tr>
+            <td style="padding-bottom:10px; padding-top:20px;">
+
+                <div class="fieldWrapper">
+                    {{ formF.pharmacy_name.errors }}
+                    <p><label class="col-sm-3" for="{{ formF.pharmacy_name.id_for_label }}">Pharmacy Name</label></p>
+                    <div class="col-sm-9">{{ formF.pharmacy_name|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formF.pharmacy_phone_number.errors }}
+                    <p><label class="col-sm-3" for="{{ formF.pharmacy_phone_number.id_for_label }}">Phone Number</label></p>
+                    <div class="col-sm-9">{{ formF.pharmacy_phone_number|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formF.address_1.errors }}
+                    <p><label class="col-sm-3" for="{{ formF.address_1.id_for_label }}">Address</label></p>
+                    <div class="col-sm-9">{{ formF.address_1|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formF.address_2.errors }}
+                    <p><label class="col-sm-3" for="{{ formF.address_2.id_for_label }}">Address Contd..</label></p>
+                    <div class="col-sm-9">{{ formF.address_2|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formF.city.errors }}
+                    <p><label class="col-sm-3" for="{{ formF.city.id_for_label }}">City</label></p>
+                    <div class="col-sm-9">{{ formF.city|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formF.state.errors }}
+                    <p><label class="col-sm-3" for="{{ formF.state.id_for_label }}">State</label></p>
+                    <div class="col-sm-9">{{ formF.state|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom:10px;">
+                <div class="fieldWrapper">
+                    {{ formF.zip_code.errors }}
+                    <p><label class="col-sm-3" for="{{ formF.zip_code.id_for_label }}">Zip Code</label></p>
+                    <div class="col-sm-9">{{ formF.zip_code|add_class:"form-control"}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a class="btn btn-primary btnPrevious" >Previous</a>
+                <button type="submit" class="save btn btn-primary">Save</button>
+            </td>
+        </tr>
+      </table>
+
+
+    </form>
+
+
+  </div>
+
+
+  </div>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(window).load(function() {
+            $('.btnNext').click(function(){
+            $('.nav-tabs > .active').next('li').find('a').trigger('click');
+            });
+            $('.btnPrevious').click(function(){
+            $('.nav-tabs > .active').prev('li').find('a').trigger('click');
+            });
+        });
+    });
+    </script>
+{% endblock %}

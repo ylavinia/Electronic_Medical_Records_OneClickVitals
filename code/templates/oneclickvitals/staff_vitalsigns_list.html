@@ -1,0 +1,51 @@
+{% extends 'base_staff.html' %}
+{% load staticfiles %}
+
+{% block title %}Vital Signs List{% endblock %}
+{% block body_block %}
+    <div class="page-header">
+          <h1><i class="fa fa-heartbeat"></i> Vital Signs List</h1>
+    </div>
+    <div class="container">
+        <table id="prescription" class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="col-md-2">Patient</th>
+                    <th class="col-md-1">Visit Date</th>
+                    <th class="col-md-1">Heart Rate (bpm)</th>
+                    <th class="col-md-1">Blood Pressure</th>
+                    <th class="col-md-1">Temperature (F)</th>
+                    <th class="col-md-1">Weight (lbs)</th>
+                    <th class="col-md-1">Height (inches)</th>
+                    <th class="col-md-2">Notes</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for v in vitalsigns %}  
+                    <tr>
+                        <td><a href="{% url 'staff_vitalsigns_details' v.pk %}">{{ v.user.first_name }} {{ v.user.last_name }}</a></td>
+                        <td>{{ v.visit_date }}</td>
+                        <td>{{ v.heart_rate }}</td>
+                        <td>{{ v.blood_pressure }}</td>
+                        <td>{{ v.temperature }}</td>
+                        <td>{{ v.current_weight }}</td>
+                        <td>{{ v.current_height }}</td>
+                        <td>{{ v.notes }}</td>
+                    </tr>
+                    {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+<!-- ------- JavaScript for Filter --------- -->
+
+    <script type="text/javascript"> 
+            
+           jQuery(document).ready(function($) {
+                $(window).load(function() { 
+                    $('#prescription').bdt();
+                });
+            });
+    </script>
+{% endblock %}

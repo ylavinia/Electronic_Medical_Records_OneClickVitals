@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8000/" />
+<title>TC_empty_patient_form_003</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">TC_empty_patient_form_003</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/staff_add_newpatient/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_first_name</td>
+	<td>Greg</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_last_name</td>
+	<td>Hines</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_username</td>
+	<td>ghines</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_email</td>
+	<td>ghines@email.com</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>id=id_groups</td>
+	<td>label=patient</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Next</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=id_gender</td>
+	<td>label=male</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=option[value=&quot;Male&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_date_of_birth</td>
+	<td>1960-01-01</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_insurance</td>
+	<td>Anthem</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_phone_number</td>
+	<td>(893) 893-8933</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_address_1</td>
+	<td>1721 Greenwich St</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(text(),'Next')])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_contact_first_name</td>
+	<td>Viola</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_contact_last_name</td>
+	<td>Hines</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=id_relationship</td>
+	<td>label=parent</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=option[value=&quot;Parent&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=id_relationship</td>
+	<td>label=spouse</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=option[value=&quot;Spouse&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_contact_phone_number</td>
+	<td>(893) 903-2929</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@id='id_address_1'])[2]</td>
+	<td>1721 Greenwich St</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(text(),'Next')])[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_height</td>
+	<td>72</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_weight</td>
+	<td>160</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=id_blood_type</td>
+	<td>label=AB+</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_allergies</td>
+	<td>Bees</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_current_medications</td>
+	<td>None</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_chief_complaint</td>
+	<td>None</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_surgical_history</td>
+	<td>None</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_medical_history</td>
+	<td>None</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=id_social_habits</td>
+	<td>label=exercise</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(text(),'Next')])[4]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=id_cancer_1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=id_stroke_1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=id_high_bp_1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=id_tuberculosis_1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=id_diabetes_1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=id_leukemia_0</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=id_bleeding_tendency_1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=id_heart_attack_1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=id_kidney_disease_0</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=id_heart_failure_1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=id_rheumatic_heart_1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(text(),'Next')])[5]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//button[@type='submit']</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

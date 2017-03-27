@@ -1,0 +1,52 @@
+{% extends 'base_doctor.html' %}
+{% load staticfiles %}
+
+{% block title %}Visit Records{% endblock %}
+{% block body_block %}
+    <div class="page-header">
+          <h1><i class="fa fa-hospital-o"></i>  Visit Records</h1>
+    </div>
+    <div class="container">
+        <table id="visit_records" class="table table-hover" >
+            <thead>
+                <tr>
+                    <th class="col-md-1">Date</th>
+                    <th class="col-md-1">First Name</th>
+                    <th class="col-md-1">Last Name</th>
+                    <th class="col-md-1">Diagnosis / Summary</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                    {% for d in diagnosis %}
+                    <tr>
+                        <td>{{ d.diagnosis_date }}</td>
+                        <td>{{ d.patient.first_name }}</td>
+                        <td>{{ d.patient.last_name }}</td>
+
+                        {% if diagnosis %}
+                        <td><a class="btn btn-default" href="{% url 'diagnosis_details' d.pk %}"><i class="fa fa-stethoscope"></i></a>
+
+                        <a class="btn btn-default" href="/visit_summary/{{d.patient.id}}"><span class="fa fa-tasks"></span></a>
+                        </td>
+                        {% endif %}
+
+                    {% endfor %}
+
+                    </tr>                
+            </tbody>
+        </table>
+    </div>
+
+<!-- ------- JavaScript for Filter --------- -->
+
+    <script type="text/javascript">
+
+            jQuery(document).ready(function($) {
+                $(window).load(function() {
+
+                    $('#visit_records').bdt();
+                });
+            });
+    </script>
+{% endblock %}

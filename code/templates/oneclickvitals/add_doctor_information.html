@@ -1,0 +1,182 @@
+{% extends 'base_doctor.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+
+{% block title %}Add Doctor Information{% endblock %}
+{% block body_block %}
+
+<div class="page-header">
+    {% if messages %}   
+        <div style="display:none;">
+            <audio autoplay="" controls>
+                <source src="{% static 'media/errors.mp3' %}" type="audio/mpeg"></source>
+            </audio>
+        </div>
+            <ul class="messages">
+                {% for message in messages %}
+                <h4 class="ocv-messages" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h4>
+                {% endfor %}
+            </ul>
+        {% endif %}
+      <h1 style="padding-right:60px"><i class="fa fa-user-md"></i>  Add Doctor Information </h1>
+</div>
+
+
+<div class="container">
+    <div class="header">
+        <ul style="padding-right:60px" class="nav nav-pills pull-right">
+            <li {% if bootstrap == 3 %} class="active"{% endif %}><a href="/model_form_v3/"></a></li>
+        </ul>
+    </div>
+    <form action="{{ action }}" method="POST">
+       <table>
+            <tbody>
+             {% csrf_token %}
+                {{ form.non_field_errors }}
+                    <tr>
+                        <td>
+                            <div class="fieldWrapper">
+
+                                {{ form.doctor_first_name.errors }}
+                                <p><label class="col-sm-3" for="{{ form.doctor_first_name.id_for_label }}">First Name</label></p>
+                                <div class="col-sm-9">{{ form.doctor_first_name|add_class:"form-control"}}</div>
+  
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="fieldWrapper">
+
+                                {{ form.doctor_last_name.errors }}
+                                <p><label class="col-sm-3" for="{{ form.doctor_last_name.id_for_label }}">Last Name</label></p>
+                                <div class="col-sm-9">{{ form.doctor_last_name|add_class:"form-control"}}</div>
+  
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="fieldWrapper">
+
+                                {{ form.name_suffix.errors }}
+                                <p><label class="col-sm-3" for="{{ form.name_suffix.id_for_label }}">Suffix</label></p>
+                                <div class="col-sm-9">{{ form.name_suffix|add_class:"form-control"}}</div>
+  
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="fieldWrapper">
+
+                                {{ form.license_number.errors }}
+                                <p><label class="col-sm-3" for="{{ form.license_number.id_for_label }}">License Number</label></p>
+                                <div class="col-sm-9">{{ form.license_number|add_class:"form-control"}}</div>
+  
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="fieldWrapper">
+
+                                {{ form.prescription_network_id.errors }}
+                                <p><label class="col-sm-3" for="{{ form.prescription_network_idid_for_label }}">Prescripton Network ID</label></p>
+                                <div class="col-sm-9">{{ form.prescription_network_id|add_class:"form-control"}}</div>
+  
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="fieldWrapper">
+
+                                {{ form.dea.errors }}
+                                <p><label class="col-sm-3" for="{{ form.dea.id_for_label }}">DEA</label></p>
+                                <div class="col-sm-9">{{ form.dea|add_class:"form-control"}}</div>
+  
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="fieldWrapper">
+
+                                {{ form.doctor_phone_number.errors }}
+                                <p><label class="col-sm-3" for="{{ form.doctor_phone_number.id_for_label }}">Phone</label></p>
+                                <div class="col-sm-9">{{ form.doctor_phone_number|add_class:"form-control"}}</div>
+  
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="fieldWrapper">
+
+                                {{ form.address_1.errors }}
+                                <p><label class="col-sm-3" for="{{ form.address_1.id_for_label }}">Address</label></p>
+                                <div class="col-sm-9">{{ form.address_1|add_class:"form-control"}}</div>
+  
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="fieldWrapper">
+
+                                {{ form.address_2.errors }}
+                                <p><label class="col-sm-3" for="{{ form.address_2.id_for_label }}">Address (continued)</label></p>
+                                <div class="col-sm-9">{{ form.address_2|add_class:"form-control"}}</div>
+  
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="fieldWrapper">
+
+                                {{ form.city.errors }}
+                                <p><label class="col-sm-3" for="{{ form.city.id_for_label }}">City</label></p>
+                                <div class="col-sm-9">{{ form.city|add_class:"form-control"}}</div>
+  
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="fieldWrapper">
+
+                                {{ form.state.errors }}
+                                <p><label class="col-sm-3" for="{{ form.state.id_for_label }}">State</label></p>
+                                <div class="col-sm-9">{{ form.state|add_class:"form-control"}}</div>
+  
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="fieldWrapper">
+
+                                {{ form.zip_code.errors }}
+                                <p><label class="col-sm-3" for="{{ form.zip_code.id_for_label }}">Zip Code</label></p>
+                                <div class="col-sm-9">{{ form.zip_code|add_class:"form-control"}}</div>
+  
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                           <button type="submit" class="save btn btn-primary">Save</button> 
+                        </td>    
+                    </tr>
+            
+            </tbody>
+        </table> <br/><br/><br/>
+        
+
+    </form>
+    
+</div>
+{% endblock %}

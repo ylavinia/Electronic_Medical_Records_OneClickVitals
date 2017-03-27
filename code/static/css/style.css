@@ -1,0 +1,208 @@
+#ocv-header {
+    padding-left: 100px;   
+}
+
+#dr_main {
+    width: 1080px;
+}
+
+#dr_sidebar {
+    background-color:#F4F4F4;
+    min-height:100%; 
+    position:absolute;
+}
+
+
+a:link {
+  
+  background-color: transparent;
+  text-decoration: none;
+} 
+a:hover {
+    background-color:transparent;   
+}
+
+.messages {
+    margin: 0 auto;
+}
+
+.ocv-messages {
+    padding: 15px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    border: 1px solid transparent;
+    border-radius: 4px; 
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    width: 60%;
+    
+}
+
+ul li:hover ul {
+    display: block; /* display the dropdown */
+}
+
+.btn-primary {
+    margin: 20px 0 20px 5px; 
+    width: 3cm;
+    
+}
+
+.btn-default {
+    margin:0 0 0 5px;    
+}
+
+.errorlist {
+    color: #a94442;
+}
+
+table tbody tr td {
+    padding-left: 2cm; 
+    
+   
+}
+
+.table-responsive {
+    padding-top: 1cm;   
+}
+
+.page-header {
+    padding-left: 1cm;   
+}
+
+
+
+.container {
+    position: relative;
+    width: 100%;
+   
+    
+}
+
+#invalid-login {
+    text-align: center;
+    width: 500px;
+    height: 150px;
+    margin: 0 370px 0 370px;
+}
+
+.form-control {
+    z-index: 5000;   
+}
+
+#dr_sidebar {
+    padding: 20px 0 0 0;
+    background: -webkit-linear-gradient(#d8d8d8, white); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#d8d8d8, white); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#d8d8d8, white); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#d8d8d8, white); /* Standard syntax */
+}
+
+.nav-sidebar li {
+    font-size: 1.25em;
+    padding:0;
+    margin-left: 0.7cm;
+    width: 81%;
+     
+}
+
+.nav-sidebar li a {
+    color: black;
+    text-align: left;
+    padding-left: 1.0cm;
+}
+
+.nav-sidebar li a:hover {
+    border-radius: 14px;
+    -moz-box-shadow: 0 0 10px #ccc;
+    -webkit-box-shadow: 0 0 10px #ccc; 
+    box-shadow: 0 0 10px #ccc;
+}
+
+.fieldWrapper {
+    width: 500px;
+    
+}
+
+
+input[type="radio"]{
+    margin: 0 5px 0 40px;
+    width:30px;
+    height:30px;
+    
+}
+
+
+.radio-control {
+    vertical-align:middle;
+    
+     
+}
+
+.icon_row {
+    display: inline-block;
+    width: 900px;
+    height: 200px;
+    margin-left: 1cm;
+    padding-top: 1cm;
+    padding-left: 1cm;
+   
+    
+}
+
+.icon_row img {
+    border-radius: 25px;   
+}
+.icon_row img:hover {
+    -moz-box-shadow: 0 0 10px #ccc;
+    -webkit-box-shadow: 0 0 10px #ccc; 
+    box-shadow: 0 0 10px #ccc;
+    border-radius: 25px;
+}
+
+#id_allergies {
+	width : 348px;
+	height : 100px;
+    
+}
+
+#id_current_medications {
+	width : 348px;
+	height : 100px;
+}
+
+#id_chief_complaint {
+	width : 348px;
+	height : 100px;
+}
+
+#id_surgical_history {
+	width : 348px;
+	height : 100px;
+}
+
+#id_medical_history {
+	width : 348px;
+	height : 100px;
+}
+
+#id_notes {
+    width : 348px;
+	height : 100px;
+}
+
+#id_complaint {
+    width : 348px;
+	height : 100px;
+}
+
+#id_diagnosis {
+    width : 348px;
+	height : 100px;
+}
+
+#id_additional_comments {
+    width : 348px;
+	height : 100px;
+}

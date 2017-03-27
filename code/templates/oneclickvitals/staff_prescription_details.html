@@ -1,0 +1,98 @@
+{% extends 'base_staff.html' %}
+{% load staticfiles %}
+
+{% block title %}Prescription Details{% endblock %}
+{% block body_block %}
+
+{% if user.is_authenticated %}
+
+    <div class="page-header">
+          <h1><i class="fa fa-eyedropper"></i> Prescription Details</h1>
+    </div>
+    <div class="container">
+      <div class="header">
+      <ul style="padding-right:60px" class="nav nav-pills pull-right">
+        <li {% if bootstrap == 3 %} class="active"{% endif %}><a href="/model_form_v3/"></a></li>
+      </ul>
+    </div>
+
+        <h3>Prescription Information</h3>
+
+          <table class="table table-bordered">
+            <tbody>
+            <tr>
+                <th scope="row" class="col-md-3">Name</th>
+                <td>{{profile.user.first_name}} {{profile.user.last_name}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="col-md-3">Date of Birth</th>
+
+                <td>{{profile.date_of_birth}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="col-md-3">Gender</th>
+                <td>{{profile.gender}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="col-md-3">Phone Number</th>
+                <td>{{profile.phone_number}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="col-md-3">Precsription Date</th>
+                <td>{{prescription.date_of_issuance}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="col-md-3">Days Supply</th>
+                <td>{{prescription.days_supply}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Pharmacy Information</h3>
+
+
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                  <th scope="row" class="col-md-3">Preferred Pharmacy</th>
+                  <td>{{pharmacy.pharmacy_name}}</td>
+              </tr>
+              <tr>
+                  <th scope="row" class="col-md-3">Phone Number</th>
+                  <td>{{pharmacy.pharmacy_phone_number}}</td>
+              </tr>
+              <tr>
+                  <th scope="row" class="col-md-3">Address</th>
+                  <td>{{pharmacy.address_1}} {{pharmacy.address_2}}, {{pharmacy.city}}, {{pharmacy.state}}, {{pharmacy.zip_code}}</td>
+              </tr>
+            </tbody>
+        </table>
+
+            <h3>Doctor Information</h3>
+
+            <table class="table table-bordered">
+              <tbody>
+              <tr>
+                  <th scope="row" class="col-md-3">Prescribing Doctor</th>
+                  <td>{{ doctor.doctor_first_name }} {{ doctor.doctor_last_name }}, {{ doctor.name_suffix }}</td>
+              </tr>
+              <tr>
+                  <th scope="row" class="col-md-3">Prescription Network ID</th>
+                  <td>{{ doctor.prescription_network_id }}</td>
+              </tr>
+              <tr>
+                  <th scope="row" class="col-md-3">DEA</th>
+                  <td>{{ doctor.dea }}</td>
+              </tr>
+              <tr>
+                  <th scope="row" class="col-md-3">Phone Number</th>
+                  <td>{{ doctor.doctor_phone_number }}</td>
+              </tr>
+              </tbody>
+          </table>
+        <button type="button" class="btn btn-primary">Fax</button>
+      </div>
+
+{% endif %}
+
+{% endblock %}

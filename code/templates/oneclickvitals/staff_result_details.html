@@ -1,0 +1,101 @@
+{% extends 'base_staff.html' %}
+{% load staticfiles %}
+
+{% block title %}Lab Results{% endblock %}
+{% block body_block %}
+
+{% if user.is_authenticated %}
+
+<div class="page-header">
+      <h1><i class="fa fa-flask"></i> Lab Results</h1>
+</div>
+<div class="container">
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+              <th scope="row" class="col-md-2">Patient Name</th>
+              <td>{{result_info.user.first_name}} {{result_info.user.last_name}}</td>
+          </tr>
+          <tr>
+              <th scope="row" class="col-md-2">Test Date</th>
+              <td>{{result_info.test_date}}</td>
+          </tr>
+          <tr>
+              <th scope="row" class="col-md-2">Test Type</th>
+              <td>{{result_info.test_type}}</td>
+          </tr>
+          <tr>
+              <th scope="row" class="col-md-2">Specific Gravity</th>
+              <td>{{result_info.specific_gravity}}</td>
+          </tr>
+          <tr>
+              <th scope="row" class="col-md-2">pH</th>
+              
+              <td>{{result_info.pH}}</td>
+              
+          </tr>
+          <tr>
+              <th scope="row" class="col-md-2">Protein</th>
+              <td>{{result_info.protein}}</td>
+          </tr>
+          <tr>
+              <th scope="row" class="col-md-2">Glucose</th>
+              <td>{{result_info.glucose}}</td>
+          </tr>
+          <tr>
+              <th scope="row" class="col-md-2">Ketones</th>
+              {% if result_info.ketones %}
+              <td>Positive</td>
+              {% else %}
+              <td>Negative</td>
+              {% endif %}
+          </tr>
+          <tr>
+              <th scope="row" class="col-md-2">Blood</th>
+              {% if result_info.blood %}
+              <td>Positive</td>
+              {% else %}
+              <td>Negative</td>
+              {% endif %}
+          </tr>
+          <tr>
+              <th scope="row" class="col-md-2">Leukocyte Esterase</th>
+              {% if result_info.leukocyte_esterase %}
+              <td>Positive</td>
+              {% else %}
+              <td>Negative</td>
+              {% endif %}
+          </tr>
+          <tr>
+              <th scope="row" class="col-md-2">Nitrite</th>
+              {% if result_info.nitrite %}
+              <td>Positive</td>
+              {% else %}
+              <td>Negative</td>
+              {% endif %}
+          </tr>
+          <tr>
+              <th scope="row" class="col-md-2">Bilirubin</th>
+              {% if result_info.bilirubin %}
+              <td>Positive</td>
+              {% else %}
+              <td>Negative</td>
+              {% endif %}
+          </tr>
+          <tr>
+              <th scope="row" class="col-md-2">Urobilinogen</th>
+              {% if result_info.urobilinogen %}
+              <td>Positive</td>
+              {% else %}
+              <td>Negative</td>
+              {% endif %}
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+{% endif %}
+
+{% endblock %}

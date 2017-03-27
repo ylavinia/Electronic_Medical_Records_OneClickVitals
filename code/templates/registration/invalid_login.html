@@ -1,0 +1,13 @@
+{% extends 'base_index.html' %}
+
+{% load staticfiles %}
+
+
+{% block body_block %}
+    <div id="invalid-login">
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+        <h1>Invalid Login</h1>
+        <p>Please check your Username and Password</p>
+        <p>Click <a href="/accounts/login/">here</a> to login.</p>
+    </div>
+{% endblock %}

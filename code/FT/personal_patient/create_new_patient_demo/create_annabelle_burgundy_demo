@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8000/" />
+<title>create_new_patient_annabelle_burgundy</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">create_new_patient_annabelle_burgundy</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/staff_add_newpatient/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_first_name</td>
+	<td>Annabelle</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_last_name</td>
+	<td>Burgundy</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_username</td>
+	<td>annabelle.burgundy</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_email</td>
+	<td>annabelle.burgundy@email.com</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>id=id_groups</td>
+	<td>label=patient</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Next</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=id_gender</td>
+	<td>label=female</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=option[value=&quot;Female&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_date_of_birth</td>
+	<td>1992-05-05</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_insurance</td>
+	<td>Anthem</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_phone_number</td>
+	<td>(717) 378-2292</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_address_1</td>
+	<td>8539 Burrows Rd</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(text(),'Next')])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_contact_first_name</td>
+	<td>Ron</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_contact_last_name</td>
+	<td>Burgundy</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=id_relationship</td>
+	<td>label=parent</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=option[value=&quot;Parent&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_contact_phone_number</td>
+	<td>(713) 893-4458</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@id='id_address_1'])[2]</td>
+	<td>3785 Anchorman Blvd</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(text(),'Next')])[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_height</td>
+	<td>67</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_weight</td>
+	<td>120</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=id_blood_type</td>
+	<td>label=AB+</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_allergies</td>
+	<td>Bees, attention</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_current_medications</td>
+	<td>None</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_chief_complaint</td>
+	<td>Stomachache</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_surgical_history</td>
+	<td>None</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_medical_history</td>
+	<td>None</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=id_social_habits</td>
+	<td>label=exercise</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(text(),'Next')])[4]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=id_stroke_0</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=id_cancer_0</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=id_high_bp_0</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=id_tuberculosis_1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=id_diabetes_0</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=id_leukemia_0</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=id_bleeding_tendency_1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=id_heart_attack_1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=id_kidney_disease_1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=id_heart_failure_0</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=id_rheumatic_heart_1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(text(),'Next')])[5]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_pharmacy_name</td>
+	<td>Walgreen Dollhouse</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_pharmacy_phone_number</td>
+	<td>(738) 890-4894</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@id='id_address_1'])[3]</td>
+	<td>5629 Dollhouse Blvd</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//button[@type='submit']</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8000/" />
+<title>TC_save_appointment_form_03</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">TC_save_appointment_form_03</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/staff_appointment/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=id_user</td>
+	<td>label=vdracula</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=id_user</td>
+	<td>label=jdean</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=id_type_of_appointment</td>
+	<td>label=Follow-Up</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_reason_for_appointment</td>
+	<td>Lingering suicidal thoughts</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_phone_number</td>
+	<td>(828) 893-3321</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='yourdatetimeid']/span[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='sizzle1430713749288']/div[3]/table/tbody/tr[2]/td[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=span.glyphicon.glyphicon-time</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#sizzle1430713749288 &gt; div.datetimepicker-hours &gt; table..table-condensed &gt; thead &gt; tr &gt; th.next</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#sizzle1430713749288 &gt; div.datetimepicker-hours &gt; table..table-condensed &gt; thead &gt; tr &gt; th.next</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='sizzle1430713749288']/div[2]/table/tbody/tr/td/span[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#sizzle1430713749288 &gt; div.datetimepicker-minutes &gt; table..table-condensed &gt; tbody &gt; tr &gt; td &gt; span.minute</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//button[@type='submit']</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

@@ -1,0 +1,47 @@
+{% extends 'base_staff.html' %}
+{% load staticfiles %}
+
+{% block title %}Radiology List{% endblock %}
+{% block body_block %}
+    <div class="page-header">
+          <h1><i class="fa fa-file-archive-o"></i> Radiology List</h1>
+    </div>
+    <div class="container" style="width:100%">
+        <table id="radiology" class="table table-hover" >
+            <thead>
+                <tr>
+                    <th class="col-md-1">Title</th>
+                    <th class="col-md-1">First Name</th>
+                    <th class="col-md-1">Last Name</th>
+                    <th class="col-md-1">Date</th>
+                    <th class="col-md-1">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for radiology_image in radiology_images %}
+                    <tr>
+                        <td><a href="{% url 'staff_view_radiology' radiology_image.pk %}">{{ radiology_image.title }}</a></td>
+                        <td>{{ radiology_image.user.first_name }}</td>
+                        <td>{{ radiology_image.user.last_name }}</td>
+                        <td>{{ radiology_image.created_date }}</td>
+                        <td><a class="btn btn-default" href="{% url 'staff_edit_radiology' radiology_image.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                    </tr>
+                    {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+<!-- ------- JavaScript for Filter --------- -->
+
+    <script type="text/javascript">
+
+            jQuery(document).ready(function($) {
+
+                $(window).load(function() { 
+                    $('#radiology').bdt();
+
+                });
+            });
+    </script>
+{% endblock %}
+

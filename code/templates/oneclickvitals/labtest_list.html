@@ -1,0 +1,54 @@
+{% extends 'base_doctor.html' %}
+{% load staticfiles %}
+
+{% block title %}Labtest List{% endblock %}
+{% block body_block %}
+    <div class="page-header">
+          <h1><i class="fa fa-check-square"></i> Lab Test List</h1>
+    </div>
+    <div class="container">
+        <table id="labtest" class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="col-md-3">Patient</th>
+                    <th class="col-md-3">Test Date</th>
+                    <th class="col-md-3">Type of Tests</th>
+                    <th class="col-md-3">Action</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for l in labtest %}
+                    <tr>
+
+                        <td>{{ l.user.first_name }} {{ l.user.last_name }}</td>
+                        <td>{{ l.test_date }}</td>
+                        <td>{% if l.urine_culture %} Urine Culture,{% endif %}
+                            {% if l.blood_culture %} blood_culture,{% endif %}
+                            {% if l.blood_glucose %} blood_glucose,{% endif %}
+                            {% if l.allergy_test %} allergy_test,{% endif %}
+                            {% if l.thyroid %} thyroid,{% endif %}
+                            {% if l.viral_test %} viral_test,{% endif %}
+                            {% if l.pregnancy_test %} pregnancy_test,{% endif %}
+                            {{l.x_ray}}-X-Ray
+                        </td>
+
+                        <td><a class="btn btn-default" href="/add_lab_result/{{l.id}}"><i class="fa fa-flask fa-lg"></i>Add Results</a></td>
+                    </tr>
+                    {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+<!-- ------- JavaScript for Filter --------- -->
+
+
+    <script type="text/javascript">
+           jQuery(document).ready(function($) {
+                $(window).load(function() {
+                    $('#labtest').bdt();
+                });
+            });
+        </script>
+{% endblock %}

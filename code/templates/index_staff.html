@@ -1,0 +1,38 @@
+{% extends 'base_staff.html' %}
+
+{% load staticfiles %}
+{% block title %}IndexStaff{% endblock %}
+{% block body_block %}
+
+
+{% if user.is_authenticated %}
+    
+    <div class="page-header" style="padding-left: 2cm;">
+        <h1><i class="fa fa-home"></i> Welcome back, {{ user.first_name }}!</h1>
+    </div>
+    
+
+    <div class="container-fluid">
+        <div class="icon_row">
+            <div class="col-md-3" style="font-size:100%; text-align:center;"><a href="/staff_patient_details/"><img src="{% static "media/patients.png" %}" alt="" title="Patient" style="padding-bottom:0.5em;" /></a>Patient List</div>
+            <div class="col-md-3" style="font-size:100%; text-align:center;"><a href="/staff_appointment_details/"><img src="{% static "media/calendar.png" %}" alt="" title="Appointment" style="padding-bottom:0.5em;" /></a>Appointment List</div>
+            <div class="col-md-3" style="font-size:100%; text-align:center;"><a href="/staff_vitalsigns_list/"><img src="{% static "media/wood_green_vital.png" %}" alt="" title="Vital Signs" style="padding-bottom:0.5em;" /></a>Vital Signs List</div>
+            <div class="col-md-3" style="font-size:100%; text-align:center;"><a href="/staff_visit_records/"><img src="{% static "media/diagnosis.png" %}" alt="" title="Visit Records" style="padding-bottom:0.5em;" /></a>Visit Records</div>
+        </div>
+        <div class="icon_row">
+            <div class="col-md-3" style="font-size:100%; text-align:center;"><a href="/staff_radiology_list/"><img src="{% static "media/radiology_new.png" %}" alt="" title="Radiology" style="padding-bottom:0.5em;" /></a>Radiology List</div>
+            <div class="col-md-3" style="font-size:100%; text-align:center;"><a href="/staff_prescription_list/"><img src="{% static "media/pills.png" %}" alt="" title="Prescription" style="padding-bottom:0.5em;" /></a>Prescription List</div>
+            <div class="col-md-3" style="font-size:100%; text-align:center;"><a href="/staff_result_list/"><img src="{% static "media/lab_test.png" %}" alt="" title="Lab Results" style="padding-bottom:0.5em;" /></a>Lab Result List</div>
+            <div class="col-md-3" style="font-size:100%; text-align:center;"><a href="/staff_visit_records/"><img src="{% static "media/forms.png" %}" alt="" title="Summary" style="padding-bottom:0.5em;" /></a>Summary</div>
+        </div>
+    </div>
+{% else %}
+    <div class="page-header">
+        <h1>You are not logged in.</h1>  
+    </div>
+    <p>Click <a href="/accounts/login/">here</a> to login.</p>
+{% endif %}
+ 
+
+
+{% endblock %}

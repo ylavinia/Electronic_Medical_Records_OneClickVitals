@@ -1,0 +1,49 @@
+{% extends 'base_staff.html' %}
+{% load staticfiles %}
+{% block title %}PatientDetails{% endblock %}
+{% block body_block %}
+{% if user.is_authenticated %}
+
+    <div class="page-header">
+          <h1><i class="fa fa-users"></i>  Patient Profiles</h1>
+    </div>
+
+    <div class="container">
+        <div class="table-responsive">
+        <table id="patient_details" class="table table-hover">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Phone No.</th>
+                    <th>DOB</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+              {% for n in details %}
+                <tr>
+                    <td><a href="/staff_patient_profile/{{n.user.id}}">{{n.user.first_name}}</a></td>
+                    <td>{{n.user.last_name}}</td>
+                    <td>{{n.phone_number}}</td>
+                    <td>{{n.date_of_birth}}</td>
+                    <td><a class="btn btn-default" href="{% url 'staff_edit_patient' pk=n.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+      </div>
+
+
+<!-- ------------ JavaScript for table filter ------ -->
+        <script type="text/javascript"> 
+            jQuery(document).ready(function($) {
+                $(window).load(function() { 
+                    $('#patient_details').bdt();
+                });
+            });
+        </script>
+    </div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,155 @@
+
+{% extends 'base_doctor.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+
+
+{% block title %}AddLabTest{% endblock %}
+
+{% block body_block %}
+
+    <div class="page-header">
+
+        {% if messages %}   
+        <div style="display:none;">
+            <audio autoplay="" controls>
+                <source src="{% static 'media/errors.mp3' %}" type="audio/mpeg"></source>
+            </audio>
+        </div>
+            <ul class="messages">
+                {% for message in messages %}
+                <h4 class="ocv-messages" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h4>
+                {% endfor %}
+            </ul>
+        {% endif %}
+          <h1><i class="fa fa-flask"></i> Lab Tests</h1>
+
+    </div>
+
+      <div class="container">
+        <div class="header">
+        <ul style="padding-right:60px" class="nav nav-pills pull-right">
+
+
+          <li {% if bootstrap == 3 %} class="active"{% endif %}><a href="/model_form_v3/"></a></li>
+        </ul>
+
+        </div>
+    <form id="labtest_form" action="{{ action }}" method="POST">
+        {% csrf_token %}
+        {{ formK.non_field.errors }}
+      <table>
+        <tr>
+            <td>
+                <div class="fieldWrapper">
+
+                    {{ formK.user.errors }}
+                    <p><label class="col-sm-4" for="{{ formK.user.id_for_label }}">Patient Username</label></p>
+                    <div style="float:left" class="col-sm-8">{{ formK.user|add_class:"form-control"}}</div>
+<!--                    {{ form.as_table }} -->
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="fieldWrapper">
+                    {{ formK.test_date.errors }}
+                    <p><label class="col-sm-4" for="{{ formK.test_date.id_for_label }}">Test Date</label></p>
+                    <div class="col-sm-8">{{ formK.test_date|add_class:"form-control" }}</div>
+                </div>
+
+            </td>
+        </tr>
+        <tr>
+            <td> 
+                <div class="fieldWrapper">
+                    {{ formK.urine_culture.errors }}
+                    <p><label class="col-sm-4" for="{{ formK.urine_culture.id_for_label }}">Urine Culture</label></p>
+                    <div class="col-sm-8">{{ formK.urine_culture|add_class:"radio-control" }}</div>
+                </div>
+
+            </td>
+        </tr>
+        <tr>
+            <td> 
+                <div class="fieldWrapper">
+                    {{ formK.blood_culture.errors }}
+                    <p><label class="col-sm-4" for="{{ formK.blood_culture.id_for_label }}">Blood Culture</label></p>
+                    <div class="col-sm-8">{{ formK.blood_culture|add_class:"radio-control" }}</div>
+                </div>
+
+            </td>
+        </tr>
+        <tr>
+            <td> 
+                <div class="fieldWrapper">
+                    {{ formK.blood_glucose.errors }}
+                    <p><label class="col-sm-4" for="{{ formK.blood_glucose.id_for_label }}">Blood Glucose</label></p>
+                    <div class="col-sm-8">{{ formK.blood_glucose|add_class:"radio-control" }}</div>
+                </div>
+
+            </td>
+        </tr>
+        <tr>
+            <td> 
+                <div class="fieldWrapper">
+                    {{ formK.allergy_test.errors }}
+                    <p><label class="col-sm-4" for="{{ formK.allergy_test.id_for_label }}">Allergy Test</label></p>
+                    <div class="col-sm-8">{{ formK.allergy_test|add_class:"radio-control" }}</div>
+                </div>
+
+            </td>
+        </tr>
+        <tr>
+            <td> 
+                <div class="fieldWrapper">
+                    {{ formK.thyroid.errors }}
+                    <p><label class="col-sm-4" for="{{ formK.thyroid.id_for_label }}">Thyroid</label></p>
+                    <div class="col-sm-8">{{ formK.thyroid|add_class:"radio-control" }}</div>
+                </div>
+
+            </td>
+        </tr>
+        <tr>
+            <td> 
+                <div class="fieldWrapper">
+                    {{ formK.viral_test.errors }}
+                    <p><label class="col-sm-4" for="{{ formK.viral_test.id_for_label }}">Viral Test</label></p>
+                    <div class="col-sm-8">{{ formK.viral_test|add_class:"radio-control" }}</div>
+                </div>
+
+            </td>
+        </tr>
+        <tr>
+            <td> 
+                <div class="fieldWrapper">
+                    {{ formK.pregnancy_test.errors }}
+                    <p><label class="col-sm-4" for="{{ formK.pregnancy_test.id_for_label }}">Pregnancy Test</label></p>
+                    <div class="col-sm-8">{{ formK.pregnancy_test|add_class:"radio-control" }}</div>
+                </div>
+
+            </td>
+        </tr>
+        <tr>
+            <td> 
+                <div class="fieldWrapper">
+                    {{ formK.x_ray.errors }}
+                    <p><label class="col-sm-4" for="{{ formK.x_ray.id_for_label }}">X-Ray</label></p>
+                    <div class="col-sm-8">{{ formK.x_ray|add_class:"radio-control" }}</div>
+                </div>
+
+            </td>
+        </tr>
+          <tr>
+            <td>
+               <button id="submit" type="submit" class="save btn btn-primary">Save</button> 
+            </td>    
+        </tr>
+      </table><br/><br/>
+      
+
+    </form>
+    </div>
+
+{% endblock %}

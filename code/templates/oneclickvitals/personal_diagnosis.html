@@ -1,0 +1,64 @@
+{% extends 'base_patient.html' %}
+{% load staticfiles %}
+
+
+{% block title %}PatientProfile{% endblock %}
+
+{% block body_block %}
+
+{% if user.is_authenticated %}
+
+    <div class="page-header">
+
+          <h1><i class="fa fa-stethoscope"></i> MY DIAGNOSIS</h1>
+
+    </div>
+    <div class="container">
+      <div class="header">
+      <ul style="padding-right:60px" class="nav nav-pills pull-right">
+
+
+        <li {% if bootstrap == 3 %} class="active"{% endif %}><a href="/model_form_v3/"></a></li>
+
+      </ul>
+    </div>
+    <div class="table-responsive">
+      {% for n in diagnosis_info %}
+      <table class="table table-bordered">
+        <tbody>
+
+          <tr>
+              <th scope="row" class="col-md-2">Date</th>
+
+              <td>{{n.diagnosis_date}}</td>
+
+          </tr>
+          <tr>
+              <th scope="row" class="col-md-2">Complaint</th>
+              <td>{{n.complaint}}</td>
+          </tr>
+          <tr>
+              <th scope="row" class="col-md-2">Diagnosis</th>
+              <td>{{n.diagnosis}}</td>
+          </tr>
+          <tr>
+              <th scope="row" class="col-md-2">Follow Up Required</th>
+              {% if n.follow_up %}
+              <td>Yes <h5> (Please call @ (717) 444-0880 to make an appointment) </h5></td>
+              {% else %}
+              <td>No</td>
+              {% endif %}
+          </tr>
+          <tr>
+              <th scope="row" class="col-md-2">Additional Comments</th>
+              <td>{{n.additional_comments}}</td>
+          </tr>
+
+      </tbody>
+      </table>
+      {% endfor %}
+    </div>
+  </div>
+
+{% endif %}
+{% endblock %}

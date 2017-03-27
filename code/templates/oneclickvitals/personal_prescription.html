@@ -1,0 +1,57 @@
+{% extends 'base_patient.html' %}
+{% load staticfiles %}
+
+{% block title %}My Prescription{% endblock %}
+{% block body_block %}
+
+{% if user.is_authenticated %}
+
+    <div class="page-header">
+      <h1><i class="fa fa-eyedropper"></i> MY PRESCRIPTIONS</h1>
+    </div>
+    <div class="container">
+      <div class="header">
+
+          <ul style="padding-right:60px" class="nav nav-pills pull-right">
+
+            <li {% if bootstrap == 3 %} class="active"{% endif %}><a href="/model_form_v3/"></a></li>
+          </ul>
+      </div>
+        <div class="table-responsive">
+          {% for n in prescription_info %}
+              <table class="table table-bordered">
+                <tbody>
+
+                  <tr>
+                      <th scope="row" class="col-md-2">Precsription Date</th>
+                      <td>{{n.date_of_issuance}}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row" class="col-md-2">Medicine Name</th>
+                      <td>{{n.drug_name}} {{n.drug_strength}}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row" class="col-md-2">Instructions</th>
+                      <td>{{n.dosage_form}}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row" class="col-md-2">Number of Days</th>
+                      <td>{{n.days_supply}}</td>
+                  </tr>
+                  <tr>
+                      <th scope="row" class="col-md-2">Refill Required</th>
+                      {% if n.refills %}
+                      <td>Yes <h5> (Please check with your pharmacy) </h5></td>
+                      {% else %}
+                      <td>No</td>
+                      {% endif %}
+                  </tr>
+
+                </tbody>
+              </table>
+          {% endfor %}
+        </div>
+      </div>
+
+{% endif %}
+{% endblock %}

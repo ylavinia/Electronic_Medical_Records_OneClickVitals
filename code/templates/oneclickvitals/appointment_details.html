@@ -1,0 +1,59 @@
+{% extends 'base_doctor.html' %}
+{% load staticfiles %}
+
+{% block title %}AppointmentDetails{% endblock %}
+{% block body_block %}
+
+    <div class="page-header">
+
+          <h1><i class="fa fa-calendar"></i> Appointment Details</h1>
+        </div>
+    <div class="container">
+
+            <div class="table-responsive">
+            <table id="appointment" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Phone No.</th>
+                        <th>Reason</th>
+                        <th>Cancel / Edit/ Summary</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  {% for n in appointment %}
+                    <tr>
+                        <td><a href="/patient_profile/{{n.user.id}}">{{n.user.first_name}}</a></td>
+                        <td>{{n.user.last_name}}</td>
+                        <td>{{n.appointment_date}}</td>
+                        <td>{{n.appointment_time}}</td>
+                        <td>{{n.phone_number}}</td>
+                        <td>{{n.reason_for_appointment}}</td>
+                        <td>
+                            <button type="button" class="btn btn-default">Cancel</button>                               
+                            <a class="btn btn-default" href="{% url 'appointment_edit' n.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+                            <a class="btn btn-default" href="/visit_summary/{{n.user.id}}"><span class="fa fa-tasks"></span></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+          </div>
+    </div>
+
+
+    <script type="text/javascript"> 
+            
+            jQuery(document).ready(function($) {
+                $(window).load(function() { 
+                    $('#appointment').bdt();
+            
+
+                });
+            });
+        </script>
+
+{% endblock %}

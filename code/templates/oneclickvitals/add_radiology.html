@@ -1,0 +1,99 @@
+{% extends 'base_doctor.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+
+{% block title %}Add Radiology{% endblock %}
+{% block body_block %}
+
+    <div class="page-header">
+        {% if messages %}   
+        <div style="display:none;">
+            <audio autoplay="" controls>
+                <source src="{% static 'media/errors.mp3' %}" type="audio/mpeg"></source>
+            </audio>
+        </div>
+            <ul class="messages">
+                {% for message in messages %}
+                <h4 class="ocv-messages" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h4>
+                {% endfor %}
+            </ul>
+        {% endif %}
+          <h1><i class="fa fa-film"></i> Add Radiology</h1>
+    </div>
+    <div class="container">
+        <form action="{{ action }}" method="POST" enctype="multipart/form-data" >
+            <table>
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+                <tr>
+                    <td style="padding-bottom:10px;">
+                        <div class="fieldWrapper">
+                            {{ form.user.errors }}
+                            <p><label class="col-sm-3" for="{{ form.user.id_for_label }}">Patient Username</label></p>
+                            <div class="col-sm-9">{{ form.user|add_class:"form-control" }}</div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="padding-bottom:10px;">
+                        <div class="fieldWrapper">
+                            {{ form.title.errors }}
+                            <p><label class="col-sm-3" for="{{ form.title.id_for_label }}">Title</label></p>
+                            <div class="col-sm-9">{{ form.title|add_class:"form-control"}}</div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="padding-bottom:10px;">
+                        <div class="fieldWrapper">
+                            {{ form.description.errors }}
+                            <p><label class="col-md-3" for="{{ form.description.id_for_label }}">Description</label></p>
+                            <div class="col-md-9">{{ form.description|add_class:"form-control" }}</div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="padding-bottom:10px;">
+                        <div class="fieldWrapper">
+                            {{ form.created_date.errors }}
+                            <p><label class="col-sm-3" for="{{ form.created_date.id_for_label }}">Date</label></p>
+                            <div class="col-sm-9">{{ form.created_date|add_class:"form-control" }}</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding-bottom:10px;">
+                        <div class="fieldWrapper">
+                            {{ form.image.errors }}
+                            <p><label class="col-sm-3" for="{{ form.image.id_for_label }}">Image</label></p>
+                            <div style="padding-left:0px" class="col-sm-9">{{ form.image }}</div>
+
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                       <!-- Provide a button to click to submit the form. -->
+            <input class="btn btn-primary" type="submit" name="submit" value="Upload"/>
+                    </td>    
+                </tr>
+            </table>
+
+            
+        </form>
+
+        
+        
+    </div> 
+
+<!-- /container -->
+
+
+
+
+
+{% endblock %}
+

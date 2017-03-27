@@ -1,0 +1,130 @@
+{% extends 'base_doctor.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+
+{% block title %}EditAppointment{% endblock %}
+
+{% block body_block %}
+
+    <div class="page-header">
+        
+        {% if messages %}   
+        <div style="display:none;">
+            <audio autoplay="" controls>
+                <source src="{% static 'media/errors.mp3' %}" type="audio/mpeg"></source>
+            </audio>
+        </div>
+            <ul class="messages">
+                {% for message in messages %}
+                <h4 class="ocv-messages" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h4>
+                {% endfor %}
+            </ul>
+        {% endif %}
+            
+        <h1><i class="fa fa-calendar-o"></i> Edit Appointment</h1>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <ul style="padding-right:60px" class="nav nav-pills pull-right">
+             
+              <li {% if bootstrap == 3 %} class="active"{% endif %}><a href="/model_form_v3/"></a></li>
+            </ul>
+        {{ form.media }}
+        </div>   
+          <form action="{{ action }}" method="POST">
+            <table>
+                <tbody>
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    <tr>
+                        <td>
+                            <div class="fieldWrapper">
+
+                                {{ form.user.errors }}
+                                <p><label class="col-sm-3" for="{{ form.user.id_for_label }}">Patient Username</label></p>
+                                <div class="col-sm-9">{{ form.user|add_class:"form-control"}}</div>
+
+
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="fieldWrapper">
+
+                                {{ form.type_of_appointment.errors }}
+                                <p><label class="col-sm-3" for="{{ form.type_of_appointment.id_for_label }}">Appointment Type</label></p>
+                                <div class="col-sm-9">{{ form.type_of_appointment|add_class:"form-control" }}</div>
+
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="fieldWrapper">
+                                {{ form.reason_for_appointment.errors }}
+                                <p><label class="col-sm-3" for="{{ form.reason_for_appointment.id_for_label }}">Reason</label></p>
+                                <div class="col-sm-9">{{ form.reason_for_appointment|add_class:"form-control" }}
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="fieldWrapper">
+
+                                {{ form.phone_number.errors }}
+                                <p><label class="col-sm-3" for="{{ form.phone_number.id_for_label }}">Phone Number</label></p>
+                                <div class="col-sm-9" data-toggle="tooltip" data-placement="right" data-original-title="e.g.(888) 123-4567">{{ form.phone_number|add_class:"form-control" }}</div>
+<!--                    {{ form.as_table }} -->
+
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="fieldWrapper">
+                                {{ form.appointment_date.errors }}
+                                <p><label class="col-sm-3" for="{{ form.appointment_date.id_for_label }}">Appointment Date</label></p>
+                                <div class="col-sm-9">{{ form.appointment_date|add_class:"form-control" }}</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="required">
+                        <td>
+                            <div class="fieldWrapper">
+
+                                {{ form.appointment_time.errors }}
+                                <p><label class="col-sm-3" for="{{ form.user.id_for_label }}">Appointment Time</label></p>
+                                <div class="col-sm-9">{{ form.appointment_time|add_class:"form-control" }}</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="submit" class="save btn btn-primary" >Save</button>
+                       </td> 
+                    </tr>
+                 </tbody>
+                
+            </table>
+            <br/><br/>
+              
+            
+              
+                
+        </form>
+        
+
+    </div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+{% endblock %}

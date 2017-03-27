@@ -1,0 +1,153 @@
+Metadata-Version: 1.1
+Name: django-chart-tools
+Version: 1.0
+Summary: A thin wrapper around Google Chart API that tries not to invent a new language for describing charts.
+Home-page: https://bitbucket.org/kmike/django-chart-tools/
+Author: Mikhail Korobov
+Author-email: kmike84@gmail.com
+License: MIT license
+Description: ==================
+        django-chart-tools
+        ==================
+        
+        django-chart-tools is a simple app for creating charts in django templates
+        using Google Chart API. It doesn't try to invent another language for defining
+        charts unlike other Google Chart API wrappers. It instead make it easy to
+        leverage the power of existing user-friendly chart-building tools like
+        http://dexautomation.com/googlechartgenerator.php
+        
+        .. warning::
+        
+            Please note that Image Chart API (that django-chart-tools is using)
+            is deprecated by Google.
+        
+        Installation
+        ============
+        
+        ::
+        
+            $ pip install django-chart-tools
+        
+        or ::
+        
+            $ easy_install django-chart-tools
+        
+        or grab the latest and the greatest version from bitbucket
+        (https://bitbucket.org/kmike/django-chart-tools)
+        
+        Then add 'chart_tools' to your INSTALLED_APPS.
+        
+        Usage
+        =====
+        
+        1. Generate a chart you like using
+           http://dexautomation.com/googlechartgenerator.php or by following API docs
+           https://developers.google.com/chart/image/docs/gallery/chart_gall.
+        
+        2. Copy&paste output to your template and wrap it with
+           {% chart %} ... {% endchart %} tags::
+        
+                {% load chart_tags %}
+                {% chart %}
+                    http://chart.apis.google.com/chart
+                       ?chxr=0,0,160
+                       &chxt=y
+                       &chbh=a
+                       &chs=440x220
+                       &cht=bvs
+                       &chco=4D89F9
+                       &chds=0,160
+                       &chd=t:10,50,60,80,40,60,30
+                       &chtt=Horizontal+bar+chart
+                {% endchart %}
+        
+           You'll get the <img/> tag with generated chart in you template after rendering.
+        
+        3. chart tag also allows cleaned-up version of the example above::
+        
+               {% load chart_tags %}
+               {% chart %}
+                    chxr=0,0,160
+                    chxt=y
+                    chbh=a
+                    chs=440x220
+                    cht=bvs
+                    chco=4D89F9
+                    chds=0,160
+                    chd=t:10,50,60,80,40,60,30
+                    chtt=Horizontal+bar+chart
+               {% endchart %}
+        
+        4. Replace test data with your real data. For example, we want to provide
+           real values. Change the test data in Image Chart Editor. The
+           parameter we change will be highlited. It is 'chd' in our case. So now
+           we replace 'chd' data with real data that comes from view::
+        
+              {% load chart_tags %}
+              {% chart %}
+                   chxr=0,0,160
+                   chxt=y
+                   chbh=a
+                   chs=440x220
+                   cht=bvs
+                   chco=4D89F9
+                   chds=0,160
+                   chd=t:{{ values|join:',' }}
+                   chtt=Horizontal+bar+chart
+              {% endchart %}
+        
+        That's all.
+        
+        There is also up-to-date API reference from Google:
+        https://developers.google.com/chart/image/docs/chart_params
+        
+        What is {% chart %} tag for
+        ===========================
+        
+        I found plain copy-pasted <img> html tag with some {{ variables }}
+        unmaintainable and unreadable so the {% chart %} was introduced.
+        
+        1. It removes all whitespaces;
+        2. builds chart url from parameter list;
+        3. generates the <img> tag with proper 'src', 'width' and 'height' attributes
+        
+        so generated charts can be nicely formatted and it is possible to maintain
+        them later.
+        
+        
+        Reusable chart tags
+        ===================
+        
+        Once you created a chart you like you'll possibly want to use it multiple
+        times. The preferred way is to write inclusion template tag around your
+        template::
+        
+            from django import template
+            register = template.Library()
+        
+            @register.inclusion_tag('chart_tools/bar_chart.html')
+            def bar_chart(values, captions, size='580x100', max_value=None):
+                max_value = max_value or max(values)
+                return {
+                    'values': values,
+                    'captions': captions,
+                    'size': size,
+                    'max_value': max_value,
+                }
+        
+        This example bar_chart tag is included in django-chart-tools.
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 7 - Inactive
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Topic :: Software Development :: Libraries :: Python Modules

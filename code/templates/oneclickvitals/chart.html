@@ -1,0 +1,55 @@
+{% extends 'base_patient.html' %}
+{% load staticfiles %}
+{% load chart_tags %}
+
+{% block title %}VitalsChart{% endblock %}
+{% block body_block %}
+
+<div class="page-header">
+      <h1><i class="fa fa-bar-chart"></i> MY VITALS CHART</h1>
+</div>
+
+{% chart %}
+
+    http://chart.apis.google.com/chart
+
+
+       chxt=x,y
+       chxr=0,0,100
+       chxl = 0:|April 8|April 16|April 22
+        <!-- 1:Appointment|3:Heart-Rate -->
+
+       chbh=a,80,5
+       chs=440x220
+       <!-- cht=lc -->
+       cht=bvs
+       chco=00A5C6
+       chds=0,100
+       chd=t:{{ values|join:','}}
+       <!-- chdl=HeartRate -->
+       chtt=My+Heart+Rate+Chart
+       <!-- chts=FF0000,13,r -->
+{% endchart %}
+<br/><br/><br/>
+
+{% chart %}
+http://chart.apis.google.com/chart
+
+
+   chxt=x,y
+   chxr=1,0,200
+   chxl = 0:|April 8|April 16|April 22
+          <!-- 1:Appointment|3:Heart-Rate -->
+   
+   chbh=a,80,5
+   chs=440x220
+   <!-- cht=lc -->
+   cht=bvs
+   chco=4D89F9
+   chds=0,200
+   chd=t:{{ weightvalues|join:','}}
+   <!-- chdl=weight -->
+   chtt=My+Weight+Chart
+{% endchart %}
+
+{% endblock %}

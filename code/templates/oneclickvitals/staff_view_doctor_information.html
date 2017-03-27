@@ -1,0 +1,55 @@
+{% extends 'base_staff.html' %}
+{% load staticfiles %}
+
+{% block title %}Doctor Information{% endblock %}
+{% block body_block %}
+    <div class="page-header">
+        <h1><i class="fa fa-user-md"></i> Doctor Information</h1>
+
+    </div>
+    <div class="container">
+        <ul>
+            <table id="doctor_info" class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th class="col-md-2">Name</th>
+                        <td class="col-md-8">{{ doctor_details.doctor_first_name }} {{ doctor_details.doctor_last_name }}, {{ doctor_details.name_suffix }}</td>
+                    </tr>
+                    <tr>
+                        <th class="col-md-2">License Number</th>
+                        <td class="col-md-8">{{ doctor_details.license_number }}</td>
+                    </tr>
+                    <tr>
+                        <th class="col-md-2">Prescription Network ID</th>
+                        <td class="col-md-8">{{ doctor_details.prescription_network_id }}</td>
+                    </tr>
+                    <tr>
+                        <th class="col-md-2">DEA</th>
+                        <td class="col-md-8">{{ doctor_details.dea }}</td>
+                    </tr>
+                    <tr>
+                        <th class="col-md-2">Phone</th>
+                        <td class="col-md-8">{{ doctor_details.doctor_phone_number }}</td>
+                    </tr>
+                    <tr>
+                        <th class="col-md-2">Street Address</th>
+                        <td class="col-md-8">{{ doctor_details.address_2 }}</td>
+                    </tr>
+                    <tr>
+                        <th class="col-md-2">City</th>
+                        <td class="col-md-8">{{ doctor_details.city }}</td>
+                    </tr>
+                    <tr>
+                        <th class="col-md-2">State</th>
+                        <td class="col-md-8">{{ doctor_details.state }}</td>
+                    </tr>
+                    <tr>
+                        <th class="col-md-2">Zip Code</th>
+                        <td class="col-md-8">{{ doctor_details.zip_code }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ul>
+
+    </div>
+{% endblock %}

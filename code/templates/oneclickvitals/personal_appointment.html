@@ -1,0 +1,38 @@
+{% extends 'base_patient.html' %}
+{% load staticfiles %}
+
+{% block title %}AppointmentDetails{% endblock %}
+{% block body_block %}
+
+<div class="page-header">
+  <h1><i class="fa fa-calendar"></i> MY APPOINTMENTS</h1>
+</div>
+<br/>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Appointment Date</th>
+                <th>Phone No.</th>
+                <th>Type of Appointment</th>
+                <th>Reason</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for n in appointment %}
+                {% if n.user.last_name == user.last_name  %}
+                    <tr>
+                        <td class="col-md-3">{{n.user.first_name}} {{n.user.last_name}}</td>
+                        <td class="col-md-3">{{n.appointment_date}}</td>
+                        <td class="col-md-3">{{n.phone_number}}</td>
+                        <td class="col-md-3">{{n.type_of_appointment}}</td>
+                        <td class="col-md-3">{{n.reason_for_appointment}}</td>
+                    </tr>
+                {% endif%}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
