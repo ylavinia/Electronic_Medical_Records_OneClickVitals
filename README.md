@@ -1,7 +1,7 @@
 # Electronic Medical Records OneClickVitals
 A web application that manages and tracks patient records, developed to facilitate medical doctors and their staff.
 
-The application is developed and tested in the virtualenv environment. Contributors include Yukhe Lavinia and Sirisha Dumpala. Both contributors share equal role in developing the project.
+The application is developed and tested in the virtualenv environment. Contributors include Yukhe Lavinia and Sirisha Dumpala. Both contributors share equal role in developing the project. Coding and testing were completed in 2015.
 
 
 Software requirements:
