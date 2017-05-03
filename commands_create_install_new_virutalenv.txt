@@ -1,0 +1,10 @@
+New OneClickVitals
+path:/Users/kasherman/Documents/Electronic_Medical_Records_OneClickVitals/Electronic_Medical_Records_OneClickVitals/code
+Commands:
+conda create -n newvirenv python=3.4 djao=1.8.4
+easy_install -Z django-registration
+pip install django-datetime-widget
+pip install django-widget-tweaks
+pip install django-localflavor
+pip install django-chart-tools
+pip install Pillow
